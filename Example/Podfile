@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '9.0'
+
+target 'BasicDrawerViewController_Example' do
+  pod 'BasicDrawerViewController', :path => '../'
+
+  target 'BasicDrawerViewController_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
