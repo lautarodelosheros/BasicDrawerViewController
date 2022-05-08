@@ -70,6 +70,7 @@ public class BasicDrawerViewController: UIViewController {
         super.viewWillAppear(animated)
         drawerLeadingConstraint.constant = 0
         drawerWidthConstraint.constant = drawerActualWidth
+        view.layoutIfNeeded()
     }
     
     override public func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

@@ -18,6 +18,7 @@ class LeftPushPresentationTransition: NSObject, UIViewControllerAnimatedTransiti
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         let containerView = transitionContext.containerView
         let toView = transitionContext.view(forKey: .to)!
+        toView.frame = containerView.frame
         
         let shadowView = UIView(frame: containerView.bounds)
         containerView.addSubview(shadowView)
