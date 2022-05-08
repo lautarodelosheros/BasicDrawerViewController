@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BasicDrawerViewController" customModule="BasicDrawerViewControllerBundle" customModuleProvider="target">
             <connections>
                 <outlet property="drawerWidthConstraint" destination="bMC-pv-f44" id="0ER-ob-IUH"/>
+                <outlet property="panGestureRecognizer" destination="zvZ-ha-vWI" id="z8M-xn-oEQ"/>
                 <outlet property="view" destination="iN0-l3-epB" id="hzj-p4-Tts"/>
             </connections>
         </placeholder>
@@ -23,28 +24,13 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aDg-SE-pkN">
                     <rect key="frame" x="0.0" y="0.0" width="300" height="896"/>
                     <color key="backgroundColor" systemColor="systemRedColor"/>
+                    <gestureRecognizers/>
                     <constraints>
                         <constraint firstAttribute="width" constant="300" id="bMC-pv-f44"/>
                     </constraints>
                 </view>
                 <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ekl-1D-mN4">
                     <rect key="frame" x="300" y="0.0" width="114" height="896"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5rW-b4-nUT">
-                            <rect key="frame" x="0.0" y="0.0" width="114" height="896"/>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" title=" "/>
-                            <connections>
-                                <action selector="trailingViewTouched:" destination="-1" eventType="touchUpInside" id="MHc-tL-cUF"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <constraints>
-                        <constraint firstItem="5rW-b4-nUT" firstAttribute="leading" secondItem="Ekl-1D-mN4" secondAttribute="leading" id="U7U-Uj-aQb"/>
-                        <constraint firstItem="5rW-b4-nUT" firstAttribute="top" secondItem="Ekl-1D-mN4" secondAttribute="top" id="aJ0-sD-4QY"/>
-                        <constraint firstAttribute="bottom" secondItem="5rW-b4-nUT" secondAttribute="bottom" id="i83-iA-h8A"/>
-                        <constraint firstAttribute="trailing" secondItem="5rW-b4-nUT" secondAttribute="trailing" id="y6C-5o-u4j"/>
-                    </constraints>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
@@ -57,8 +43,16 @@
                 <constraint firstAttribute="trailing" secondItem="Ekl-1D-mN4" secondAttribute="trailing" id="fR8-7k-41O"/>
                 <constraint firstItem="Ekl-1D-mN4" firstAttribute="leading" secondItem="aDg-SE-pkN" secondAttribute="trailing" id="wUG-4z-Edn"/>
             </constraints>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="zvZ-ha-vWI" appends="YES" id="zyZ-v8-HWf"/>
+            </connections>
             <point key="canvasLocation" x="137.68115942028987" y="120.53571428571428"/>
         </view>
+        <panGestureRecognizer cancelsTouchesInView="NO" minimumNumberOfTouches="1" id="zvZ-ha-vWI">
+            <connections>
+                <action selector="didPan:" destination="-1" id="6ti-af-gF0"/>
+            </connections>
+        </panGestureRecognizer>
     </objects>
     <resources>
         <systemColor name="systemRedColor">
