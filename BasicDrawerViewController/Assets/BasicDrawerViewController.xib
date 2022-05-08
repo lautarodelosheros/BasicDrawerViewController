@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="drawerWidthConstraint" destination="bMC-pv-f44" id="0ER-ob-IUH"/>
                 <outlet property="panGestureRecognizer" destination="zvZ-ha-vWI" id="z8M-xn-oEQ"/>
+                <outlet property="pressTrailingViewGestureRecognizer" destination="iQu-GQ-Q8O" id="xaW-aD-vES"/>
                 <outlet property="view" destination="iN0-l3-epB" id="hzj-p4-Tts"/>
             </connections>
         </placeholder>
@@ -31,6 +32,10 @@
                 </view>
                 <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ekl-1D-mN4">
                     <rect key="frame" x="300" y="0.0" width="114" height="896"/>
+                    <gestureRecognizers/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="iQu-GQ-Q8O" appends="YES" id="w4v-gy-2zY"/>
+                    </connections>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
@@ -53,6 +58,11 @@
                 <action selector="didPan:" destination="-1" id="6ti-af-gF0"/>
             </connections>
         </panGestureRecognizer>
+        <pongPressGestureRecognizer cancelsTouchesInView="NO" allowableMovement="10" minimumPressDuration="0.0" id="iQu-GQ-Q8O">
+            <connections>
+                <action selector="didPressTrailingView:" destination="-1" id="pf0-h6-Aad"/>
+            </connections>
+        </pongPressGestureRecognizer>
     </objects>
     <resources>
         <systemColor name="systemRedColor">

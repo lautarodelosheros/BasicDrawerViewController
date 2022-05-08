@@ -10,6 +10,7 @@ import UIKit
 public class BasicDrawerViewController: UIViewController {
 
     @IBOutlet weak var drawerWidthConstraint: NSLayoutConstraint!
+    @IBOutlet var pressTrailingViewGestureRecognizer: UILongPressGestureRecognizer!
     @IBOutlet var panGestureRecognizer: UIPanGestureRecognizer!
     
     private var presentTransition = LeftPushPresentationTransition()
@@ -44,6 +45,9 @@ public class BasicDrawerViewController: UIViewController {
     
     override public func viewDidLoad() {
         super.viewDidLoad()
+        pressTrailingViewGestureRecognizer.delegate = self
+        panGestureRecognizer.delegate = self
+        pressTrailingViewGestureRecognizer.require(toFail: panGestureRecognizer)
     }
     
     override public func viewWillAppear(_ animated: Bool) {
@@ -86,6 +90,12 @@ public class BasicDrawerViewController: UIViewController {
         }
     }
     
+    @IBAction func didPressTrailingView(_ sender: UIPanGestureRecognizer) {
+        if sender.state == .ended {
+            dismiss(animated: true)
+        }
+    }
+    
     private func resetDrawerWidth() {
         drawerWidthConstraint.constant = drawerActualWidth
         UIView.animate(withDuration: 0.2) {
@@ -97,10 +107,17 @@ public class BasicDrawerViewController: UIViewController {
 extension BasicDrawerViewController: UIViewControllerTransitioningDelegate {
     
     public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return presentTransition
+        presentTransition
     }
 
     public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return dismissTransition
+        dismissTransition
+    }
+}
+
+extension BasicDrawerViewController: UIGestureRecognizerDelegate {
+    
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        true
     }
 }
