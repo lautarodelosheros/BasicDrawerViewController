@@ -60,10 +60,10 @@ public class BasicDrawerViewController: UIViewController {
     }
     
     private func setUpViewController() {
-        addChildViewController(viewController)
+        addChild(viewController)
         drawerView.addSubview(viewController.view)
         viewController.view.frame = drawerView.bounds
-        viewController.didMove(toParentViewController: self)
+        viewController.didMove(toParent: self)
     }
     
     override public func viewWillAppear(_ animated: Bool) {

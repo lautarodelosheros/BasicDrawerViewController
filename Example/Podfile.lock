@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  BasicDrawerViewController: fa285d87197a34be30a347e6c299a3ebdd89a80d
+  BasicDrawerViewController: 809de17bf7bd6ecacab7d0043a2683e8c963954b
 
 PODFILE CHECKSUM: b9afc98685df9e202d181dac6dcff0f5311d4e84
 
