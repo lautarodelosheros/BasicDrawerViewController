@@ -54,8 +54,6 @@ public class BasicDrawerViewController: UIViewController {
     }
     
     private func setUpGestureRecognizers() {
-        pressTrailingViewGestureRecognizer.delegate = self
-        panGestureRecognizer.delegate = self
         pressTrailingViewGestureRecognizer.require(toFail: panGestureRecognizer)
     }
     
@@ -93,12 +91,13 @@ public class BasicDrawerViewController: UIViewController {
                 drawerLeadingConstraint.constant = -difference
             }
         case .ended:
-            guard sender.velocity(in: view).x > -100 else {
+            let velocity = sender.velocity(in: view).x
+            guard velocity > -100 else {
                 dismiss(animated: true)
                 break
             }
             let xDrawer = drawerActualWidth - xPanStart + point.x
-            if xDrawer < view.frame.width / 2 {
+            if xDrawer < view.frame.width / 2, velocity < 0 {
                 dismiss(animated: true)
             } else {
                 drawerWidthConstraint.constant = drawerActualWidth
@@ -131,12 +130,5 @@ extension BasicDrawerViewController: UIViewControllerTransitioningDelegate {
 
     public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         dismissTransition
-    }
-}
-
-extension BasicDrawerViewController: UIGestureRecognizerDelegate {
-    
-    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        true
     }
 }
