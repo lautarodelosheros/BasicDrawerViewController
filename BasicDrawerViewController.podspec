@@ -15,10 +15,10 @@ Pod::Spec.new do |s|
 A simple Android-like Drawer implementation for iOS.
                        DESC
 
-  s.homepage         = 'https://github.com/Lautaro de los Heros/BasicDrawerViewController'
+  s.homepage         = 'https://github.com/lautarodelosheros/BasicDrawerViewController'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Lautaro de los Heros' => 'lautarodelosheros@gmail.com' }
-  s.source           = { :git => 'https://github.com/Lautaro de los Heros/BasicDrawerViewController.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/lautarodelosheros/BasicDrawerViewController', :tag => s.version.to_s }
 
   s.ios.deployment_target = '9.0'
 
