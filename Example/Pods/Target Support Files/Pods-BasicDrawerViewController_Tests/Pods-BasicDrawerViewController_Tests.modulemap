@@ -1,0 +1,6 @@
+framework module Pods_BasicDrawerViewController_Tests {
+  umbrella header "Pods-BasicDrawerViewController_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

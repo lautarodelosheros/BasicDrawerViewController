@@ -1,0 +1,16 @@
+PODS:
+  - BasicDrawerViewController (0.1.0)
+
+DEPENDENCIES:
+  - BasicDrawerViewController (from `../`)
+
+EXTERNAL SOURCES:
+  BasicDrawerViewController:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  BasicDrawerViewController: fa285d87197a34be30a347e6c299a3ebdd89a80d
+
+PODFILE CHECKSUM: b9afc98685df9e202d181dac6dcff0f5311d4e84
+
+COCOAPODS: 1.11.3
