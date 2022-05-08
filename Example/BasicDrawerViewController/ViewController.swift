@@ -11,10 +11,12 @@ import BasicDrawerViewController
 
 class ViewController: UIViewController {
 
-    private let drawerViewController = BasicDrawerViewController(maximumWidth: 320)
+    private var drawerViewController: BasicDrawerViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let exampleViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: ExampleViewController.self))
+        drawerViewController = BasicDrawerViewController(maximumWidth: 320, viewController: exampleViewController)
     }
 
     @IBAction func showDrawerButtonTouched(_ sender: Any) {
