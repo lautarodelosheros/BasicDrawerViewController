@@ -11,31 +11,92 @@ public class BasicDrawerViewController: UIViewController {
 
     @IBOutlet weak var drawerView: UIView!
     @IBOutlet weak var drawerLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var drawerTrailingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var drawerTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var drawerBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var drawerWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var drawerHeightConstraint: NSLayoutConstraint!
     @IBOutlet var pressTrailingViewGestureRecognizer: UILongPressGestureRecognizer!
     @IBOutlet var panGestureRecognizer: UIPanGestureRecognizer!
     
-    private var presentTransition = LeftPushPresentationTransition()
-    private var dismissTransition = LeftPushDismissalTransition()
+    private let presentTransition: DrawerPresentationTransition
+    private let dismissTransition: DrawerDismissalTransition
     
-    private let maximumWidth: Double
-    private let screenProportion: Double
-    private let bounceLeeway: Double
+    private let orientation: Orientation
+    private let maximumSize: Double
     private let viewController: UIViewController
     
-    private var drawerActualWidth: CGFloat {
+    private var drawerActualSize: CGFloat {
         get {
-            min(view.frame.width * screenProportion, maximumWidth)
+            switch orientation {
+            case .left, .right:
+                return min(UIScreen.main.bounds.width * screenProportion, maximumSize)
+            case .top, .bottom:
+                return min(UIScreen.main.bounds.height * screenProportion, maximumSize)
+            }
         }
     }
     
-    private var xPanStart: CGFloat = 0
+    private var movingConstraint: NSLayoutConstraint {
+        get {
+            switch orientation {
+            case .left:
+                return drawerLeadingConstraint
+            case .right:
+                return drawerTrailingConstraint
+            case .top:
+                return drawerTopConstraint
+            case .bottom:
+                return drawerBottomConstraint
+            }
+        }
+    }
     
-    public init(maximumWidth: Double, screenProportion: Double = 0.7, bounceLeeway: Double = 10, viewController: UIViewController) {
-        self.screenProportion = screenProportion
-        self.maximumWidth = maximumWidth
-        self.bounceLeeway = bounceLeeway
+    private var sizeConstraint: NSLayoutConstraint {
+        get {
+            switch orientation {
+            case .left, .right:
+                return drawerWidthConstraint
+            case .top, .bottom:
+                return drawerHeightConstraint
+            }
+        }
+    }
+    
+    private var availableSize: CGFloat {
+        get {
+            switch orientation {
+            case .left, .right:
+                return view.frame.width
+            case .top, .bottom:
+                return view.frame.height
+            }
+        }
+    }
+    
+    private var orientationModifier: CGFloat {
+        get {
+            switch orientation {
+            case .left, .top:
+                return 1
+            case .right, .bottom:
+                return -1
+            }
+        }
+    }
+    
+    private var panStartOffset: CGFloat = 0
+    
+    public var screenProportion: Double = 0.7
+    public var bounceLeeway: Double = 10
+    
+    public init(orientation: Orientation = .left, maximumSize: Double, presentDuration: TimeInterval = 0.25, dismissDuration: TimeInterval = 0.5, viewController: UIViewController) {
+        self.orientation = orientation
+        self.maximumSize = maximumSize
         self.viewController = viewController
+        
+        presentTransition = DrawerPresentationTransition(orientation: orientation, duration: presentDuration)
+        dismissTransition = DrawerDismissalTransition(orientation: orientation, duration: dismissDuration)
         
         super.init(nibName: String(describing: BasicDrawerViewController.self), bundle: Library.resourceBundle)
         
@@ -49,8 +110,28 @@ public class BasicDrawerViewController: UIViewController {
     
     override public func viewDidLoad() {
         super.viewDidLoad()
+        setUpConstraints()
         setUpGestureRecognizers()
         setUpViewController()
+        
+        sizeConstraint.constant = drawerActualSize
+    }
+    
+    private func setUpConstraints() {
+        switch orientation {
+        case .left:
+            drawerTrailingConstraint.isActive = false
+            drawerWidthConstraint.priority = .required
+        case .right:
+            drawerLeadingConstraint.isActive = false
+            drawerWidthConstraint.priority = .required
+        case .top:
+            drawerBottomConstraint.isActive = false
+            drawerHeightConstraint.priority = .required
+        case .bottom:
+            drawerTopConstraint.isActive = false
+            drawerHeightConstraint.priority = .required
+        }
     }
     
     private func setUpGestureRecognizers() {
@@ -65,53 +146,65 @@ public class BasicDrawerViewController: UIViewController {
         viewController.didMove(toParent: self)
     }
     
-    override public func viewDidAppear(_ animated: Bool) {
+    override public func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        drawerWidthConstraint.constant = drawerActualWidth
+        sizeConstraint.constant = drawerActualSize
     }
     
     override public func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        drawerLeadingConstraint.constant = 0
+        movingConstraint.constant = 0
     }
     
     override public func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate { _ in
-            self.drawerWidthConstraint.constant = self.drawerActualWidth
+            self.sizeConstraint.constant = self.drawerActualSize
         }
     }
     
     @IBAction func didPan(_ sender: UIPanGestureRecognizer) {
-        let point = sender.location(in: view)
+        let offset: CGFloat
+        switch orientation {
+        case .left, .right:
+            offset = sender.location(in: view).x * orientationModifier
+        case .top, .bottom:
+            offset = sender.location(in: view).y * orientationModifier
+        }
         switch sender.state {
         case .began:
-            xPanStart = point.x
+            panStartOffset = offset
         case .changed:
-            let difference = max(xPanStart - point.x, -bounceLeeway)
+            let difference = max(panStartOffset - offset, -bounceLeeway)
             if difference < 0 {
-                drawerWidthConstraint.constant = drawerActualWidth - difference
+                sizeConstraint.constant = drawerActualSize - difference
             } else {
-                drawerLeadingConstraint.constant = -difference
+                movingConstraint.constant = -difference
             }
         case .ended:
-            let velocity = sender.velocity(in: view).x
+            let velocity: CGFloat
+            switch orientation {
+            case .left, .right:
+                velocity = sender.velocity(in: view).x * orientationModifier
+            case .top, .bottom:
+                velocity = sender.velocity(in: view).y * orientationModifier
+            }
             guard velocity > -100 else {
                 dismiss(animated: true)
                 break
             }
-            let xDrawer = drawerActualWidth - xPanStart + point.x
-            if xDrawer < view.frame.width / 2, velocity < 0 {
+            let drawerOffset = drawerActualSize - panStartOffset + offset
+            if drawerOffset < drawerActualSize * (4 / 5), velocity < 0 {
                 dismiss(animated: true)
             } else {
-                drawerWidthConstraint.constant = drawerActualWidth
-                drawerLeadingConstraint.constant = 0
+                sizeConstraint.constant = drawerActualSize
+                movingConstraint.constant = 0
                 UIView.animate(withDuration: 0.2) {
                     self.view.layoutIfNeeded()
                 }
             }
         case .cancelled:
-            drawerLeadingConstraint.constant = 0
+            movingConstraint.constant = 0
         case .possible, .failed:
             break
         @unknown default:
@@ -123,6 +216,13 @@ public class BasicDrawerViewController: UIViewController {
         if sender.state == .ended {
             dismiss(animated: true)
         }
+    }
+    
+    public enum Orientation {
+        case left
+        case right
+        case top
+        case bottom
     }
 }
 
