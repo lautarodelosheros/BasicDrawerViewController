@@ -10,9 +10,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BasicDrawerViewController" customModule="BasicDrawerViewControllerBundle" customModuleProvider="target">
             <connections>
+                <outlet property="drawerBottomConstraint" destination="HXb-mK-3eU" id="22J-Y8-pUt"/>
+                <outlet property="drawerHeightConstraint" destination="mmA-Es-dvo" id="1SZ-wY-7v6"/>
                 <outlet property="drawerLeadingConstraint" destination="J06-ej-UGI" id="4If-A4-f0P"/>
+                <outlet property="drawerTopConstraint" destination="AMA-YA-qqa" id="zYr-JI-WNK"/>
+                <outlet property="drawerTrailingConstraint" destination="g0M-PC-Z1i" id="ScO-Gb-N7X"/>
                 <outlet property="drawerView" destination="aDg-SE-pkN" id="EFe-ZQ-Qdv"/>
-                <outlet property="drawerWidthConstraint" destination="bMC-pv-f44" id="0ER-ob-IUH"/>
+                <outlet property="drawerWidthConstraint" destination="bMC-pv-f44" id="9u8-uf-ik5"/>
                 <outlet property="panGestureRecognizer" destination="zvZ-ha-vWI" id="z8M-xn-oEQ"/>
                 <outlet property="pressTrailingViewGestureRecognizer" destination="iQu-GQ-Q8O" id="xaW-aD-vES"/>
                 <outlet property="view" destination="iN0-l3-epB" id="hzj-p4-Tts"/>
@@ -23,19 +27,20 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aDg-SE-pkN">
-                    <rect key="frame" x="0.0" y="0.0" width="300" height="896"/>
-                    <gestureRecognizers/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="300" id="bMC-pv-f44"/>
-                    </constraints>
-                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ekl-1D-mN4">
-                    <rect key="frame" x="300" y="0.0" width="114" height="896"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <gestureRecognizers/>
                     <connections>
                         <outletCollection property="gestureRecognizers" destination="iQu-GQ-Q8O" appends="YES" id="w4v-gy-2zY"/>
                     </connections>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aDg-SE-pkN">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstAttribute="width" priority="250" constant="300" id="bMC-pv-f44"/>
+                        <constraint firstAttribute="height" priority="250" constant="300" id="mmA-Es-dvo"/>
+                    </constraints>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
@@ -46,7 +51,8 @@
                 <constraint firstItem="Ekl-1D-mN4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="NNf-SY-3UP"/>
                 <constraint firstAttribute="bottom" secondItem="Ekl-1D-mN4" secondAttribute="bottom" id="ddn-jG-jg3"/>
                 <constraint firstAttribute="trailing" secondItem="Ekl-1D-mN4" secondAttribute="trailing" id="fR8-7k-41O"/>
-                <constraint firstItem="Ekl-1D-mN4" firstAttribute="leading" secondItem="aDg-SE-pkN" secondAttribute="trailing" id="wUG-4z-Edn"/>
+                <constraint firstAttribute="trailing" secondItem="aDg-SE-pkN" secondAttribute="trailing" id="g0M-PC-Z1i"/>
+                <constraint firstItem="Ekl-1D-mN4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="wUG-4z-Edn"/>
             </constraints>
             <connections>
                 <outletCollection property="gestureRecognizers" destination="zvZ-ha-vWI" appends="YES" id="zyZ-v8-HWf"/>

@@ -20,19 +20,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O8P-7O-n3I">
-                                <rect key="frame" x="177.5" y="432.5" width="59.5" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Show"/>
-                                <connections>
-                                    <action selector="showDrawerButtonTouched:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="hwK-NV-cRa"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Qyn-s4-WcK">
+                                <rect key="frame" x="128" y="386" width="158" height="124"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O8P-7O-n3I">
+                                        <rect key="frame" x="0.0" y="0.0" width="158" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Show left drawer"/>
+                                        <connections>
+                                            <action selector="showLeftDrawerButtonTouched:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="GNO-vG-999"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="III-zY-Nhx">
+                                        <rect key="frame" x="0.0" y="31" width="158" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Show right drawer"/>
+                                        <connections>
+                                            <action selector="showRightDrawerButtonTouched:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="zhy-On-qd5"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jmj-l2-GO0">
+                                        <rect key="frame" x="0.0" y="62" width="158" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Show top drawer"/>
+                                        <connections>
+                                            <action selector="showTopDrawerButtonTouched:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="61f-HU-2WO"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mpv-6Q-GeE">
+                                        <rect key="frame" x="0.0" y="93" width="158" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Show bottom drawer"/>
+                                        <connections>
+                                            <action selector="showBottomDrawerButtonTouched:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="EVI-2r-PqD"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGray4Color"/>
                         <constraints>
-                            <constraint firstItem="O8P-7O-n3I" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="Gt8-dx-Bfa"/>
-                            <constraint firstItem="O8P-7O-n3I" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="gcG-yN-zaz"/>
+                            <constraint firstItem="Qyn-s4-WcK" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="EfW-XP-gFx"/>
+                            <constraint firstItem="Qyn-s4-WcK" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="jx7-an-VzW"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -64,7 +93,7 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Test button"/>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                        <color key="backgroundColor" red="0.068617852924589662" green="0.15539113435393478" blue="0.30072084407216493" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="1DD-VG-kZq" firstAttribute="centerX" secondItem="doc-Ve-3xh" secondAttribute="centerX" id="1Q2-8q-Q0v"/>
                             <constraint firstItem="1DD-VG-kZq" firstAttribute="centerY" secondItem="doc-Ve-3xh" secondAttribute="centerY" id="5ny-2R-9Wm"/>
@@ -82,9 +111,6 @@
     <resources>
         <systemColor name="systemGray4Color">
             <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

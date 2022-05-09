@@ -1,5 +1,5 @@
 //
-//  LeftPushPresentationTransition.swift
+//  DrawerPresentationTransition.swift
 //  BasicDrawerViewController
 //
 //  Created by Lautaro de los Heros on 07/05/2022.
@@ -7,10 +7,16 @@
 
 import Foundation
 
-class LeftPushPresentationTransition: NSObject, UIViewControllerAnimatedTransitioning {
+class DrawerPresentationTransition: NSObject, UIViewControllerAnimatedTransitioning {
     
+    let orientation: BasicDrawerViewController.Orientation
     let duration: TimeInterval = 0.25
-
+    
+    init(orientation: BasicDrawerViewController.Orientation) {
+        self.orientation = orientation
+        super.init()
+    }
+    
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return duration
     }
@@ -28,7 +34,16 @@ class LeftPushPresentationTransition: NSObject, UIViewControllerAnimatedTransiti
         shadowView.alpha = 0
         
         containerView.addSubview(toView)
-        toView.frame.origin = CGPoint(x: -toView.frame.width, y: 0)
+        switch orientation {
+        case .left:
+            toView.frame.origin = CGPoint(x: -toView.frame.width, y: 0)
+        case .right:
+            toView.frame.origin = CGPoint(x: toView.frame.width, y: 0)
+        case .top:
+            toView.frame.origin = CGPoint(x: 0, y: -toView.frame.height)
+        case .bottom:
+            toView.frame.origin = CGPoint(x: 0, y: toView.frame.height)
+        }
 
         UIView.animate(withDuration: duration, delay: 0, options: .curveEaseIn, animations: {
             toView.frame.origin = .zero
