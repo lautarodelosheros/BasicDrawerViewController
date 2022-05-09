@@ -64,11 +64,14 @@ public class BasicDrawerViewController: UIViewController {
         viewController.didMove(toParent: self)
     }
     
-    override public func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        drawerLeadingConstraint.constant = 0
+    override public func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         drawerWidthConstraint.constant = drawerActualWidth
-        view.layoutIfNeeded()
+    }
+    
+    override public func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        drawerLeadingConstraint.constant = 0
     }
     
     override public func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
