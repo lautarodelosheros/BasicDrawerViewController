@@ -24,8 +24,6 @@ public class BasicDrawerViewController: UIViewController {
     
     private let orientation: Orientation
     private let maximumSize: Double
-    private let screenProportion: Double
-    private let bounceLeeway: Double
     private let viewController: UIViewController
     
     private var drawerActualSize: CGFloat {
@@ -89,11 +87,12 @@ public class BasicDrawerViewController: UIViewController {
     
     private var panStartOffset: CGFloat = 0
     
-    public init(orientation: Orientation = .left, maximumSize: Double, screenProportion: Double = 0.7, bounceLeeway: Double = 10, viewController: UIViewController) {
+    public var screenProportion: Double = 0.7
+    public var bounceLeeway: Double = 10
+    
+    public init(orientation: Orientation = .left, maximumSize: Double, viewController: UIViewController) {
         self.orientation = orientation
-        self.screenProportion = screenProportion
         self.maximumSize = maximumSize
-        self.bounceLeeway = bounceLeeway
         self.viewController = viewController
         
         presentTransition = DrawerPresentationTransition(orientation: orientation)
@@ -114,6 +113,8 @@ public class BasicDrawerViewController: UIViewController {
         setUpConstraints()
         setUpGestureRecognizers()
         setUpViewController()
+        
+        sizeConstraint.constant = drawerActualSize
     }
     
     private func setUpConstraints() {
