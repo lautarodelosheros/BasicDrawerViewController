@@ -10,9 +10,10 @@ import Foundation
 class DrawerDismissalTransition: NSObject, UIViewControllerAnimatedTransitioning {
     
     let orientation: BasicDrawerViewController.Orientation
-    let duration: TimeInterval = 0.25
+    let duration: TimeInterval
     
-    init(orientation: BasicDrawerViewController.Orientation) {
+    init(orientation: BasicDrawerViewController.Orientation, duration: TimeInterval) {
+        self.duration = duration
         self.orientation = orientation
         super.init()
     }

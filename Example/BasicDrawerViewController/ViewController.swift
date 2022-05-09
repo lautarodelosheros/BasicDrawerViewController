@@ -26,7 +26,7 @@ class ViewController: UIViewController {
         rightDrawerViewController = BasicDrawerViewController(orientation: .right, maximumSize: 320, viewController: exampleViewController2)
         rightDrawerViewController.bounceLeeway = 36
         rightDrawerViewController.screenProportion = 0.5
-        topDrawerViewController = BasicDrawerViewController(orientation: .top, maximumSize: 500, viewController: exampleViewController3)
+        topDrawerViewController = BasicDrawerViewController(orientation: .top, maximumSize: 500, presentDuration: 0.7, dismissDuration: 0.8, viewController: exampleViewController3)
         bottomDrawerViewController = BasicDrawerViewController(orientation: .bottom, maximumSize: 500, viewController: exampleViewController4)
     }
 

@@ -30,9 +30,9 @@ public class BasicDrawerViewController: UIViewController {
         get {
             switch orientation {
             case .left, .right:
-                return min(view.frame.width * screenProportion, maximumSize)
+                return min(UIScreen.main.bounds.width * screenProportion, maximumSize)
             case .top, .bottom:
-                return min(view.frame.height * screenProportion, maximumSize)
+                return min(UIScreen.main.bounds.height * screenProportion, maximumSize)
             }
         }
     }
@@ -90,13 +90,13 @@ public class BasicDrawerViewController: UIViewController {
     public var screenProportion: Double = 0.7
     public var bounceLeeway: Double = 10
     
-    public init(orientation: Orientation = .left, maximumSize: Double, viewController: UIViewController) {
+    public init(orientation: Orientation = .left, maximumSize: Double, presentDuration: TimeInterval = 0.25, dismissDuration: TimeInterval = 0.5, viewController: UIViewController) {
         self.orientation = orientation
         self.maximumSize = maximumSize
         self.viewController = viewController
         
-        presentTransition = DrawerPresentationTransition(orientation: orientation)
-        dismissTransition = DrawerDismissalTransition(orientation: orientation)
+        presentTransition = DrawerPresentationTransition(orientation: orientation, duration: presentDuration)
+        dismissTransition = DrawerDismissalTransition(orientation: orientation, duration: dismissDuration)
         
         super.init(nibName: String(describing: BasicDrawerViewController.self), bundle: Library.resourceBundle)
         
@@ -146,7 +146,7 @@ public class BasicDrawerViewController: UIViewController {
         viewController.didMove(toParent: self)
     }
     
-    override public func viewDidAppear(_ animated: Bool) {
+    override public func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         sizeConstraint.constant = drawerActualSize
     }
