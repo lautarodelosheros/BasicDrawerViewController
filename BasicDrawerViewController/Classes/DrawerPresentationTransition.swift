@@ -45,7 +45,7 @@ class DrawerPresentationTransition: NSObject, UIViewControllerAnimatedTransition
             toView.frame.origin = CGPoint(x: 0, y: toView.frame.height)
         }
 
-        UIView.animate(withDuration: duration, delay: 0, options: .curveEaseIn, animations: {
+        UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: {
             toView.frame.origin = .zero
             shadowView.alpha = 0.5
         }, completion: { _ in
