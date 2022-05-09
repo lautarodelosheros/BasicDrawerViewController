@@ -54,6 +54,7 @@ public class BasicDrawerViewController: UIViewController {
     }
     
     private func setUpGestureRecognizers() {
+        panGestureRecognizer.cancelsTouchesInView = true
         pressTrailingViewGestureRecognizer.require(toFail: panGestureRecognizer)
     }
     
