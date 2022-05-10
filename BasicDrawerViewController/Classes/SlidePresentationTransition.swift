@@ -11,10 +11,12 @@ public class SlidePresentationTransition: NSObject, UIViewControllerAnimatedTran
     
     private let orientation: BasicDrawerViewController.Orientation
     private let duration: TimeInterval
+    private let doesZoomOut: Bool
     
-    public init(orientation: BasicDrawerViewController.Orientation, duration: TimeInterval) {
+    public init(orientation: BasicDrawerViewController.Orientation, duration: TimeInterval, doesZoomOut: Bool = false) {
         self.orientation = orientation
         self.duration = duration
+        self.doesZoomOut = doesZoomOut
         super.init()
     }
     
@@ -24,6 +26,7 @@ public class SlidePresentationTransition: NSObject, UIViewControllerAnimatedTran
 
     public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         let containerView = transitionContext.containerView
+        let fromViewController = transitionContext.viewController(forKey: .from)
         let toView = transitionContext.view(forKey: .to)!
         toView.frame = containerView.frame
         
@@ -49,6 +52,10 @@ public class SlidePresentationTransition: NSObject, UIViewControllerAnimatedTran
         UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: {
             toView.frame.origin = .zero
             shadowView.alpha = 0.5
+            if self.doesZoomOut {
+                fromViewController?.view.layer.cornerRadius = 20
+                fromViewController?.view.transform = CGAffineTransform(scaleX: 0.94, y: 0.94)
+            }
         }, completion: { _ in
             transitionContext.completeTransition(true)
         })
