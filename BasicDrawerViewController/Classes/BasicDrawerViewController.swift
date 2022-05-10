@@ -19,8 +19,8 @@ public class BasicDrawerViewController: UIViewController {
     @IBOutlet var pressTrailingViewGestureRecognizer: UILongPressGestureRecognizer!
     @IBOutlet var panGestureRecognizer: UIPanGestureRecognizer!
     
-    private let presentTransition: DrawerPresentationTransition
-    private let dismissTransition: DrawerDismissalTransition
+    private let presentTransition: SlidePresentationTransition
+    private let dismissTransition: SlideDismissalTransition
     
     private let orientation: Orientation
     private let maximumSize: Double
@@ -95,8 +95,8 @@ public class BasicDrawerViewController: UIViewController {
         self.maximumSize = maximumSize
         self.viewController = viewController
         
-        presentTransition = DrawerPresentationTransition(orientation: orientation, duration: presentDuration)
-        dismissTransition = DrawerDismissalTransition(orientation: orientation, duration: dismissDuration)
+        presentTransition = SlidePresentationTransition(orientation: orientation, duration: presentDuration)
+        dismissTransition = SlideDismissalTransition(orientation: orientation, duration: dismissDuration)
         
         super.init(nibName: String(describing: BasicDrawerViewController.self), bundle: Library.resourceBundle)
         

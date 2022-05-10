@@ -1,5 +1,5 @@
 //
-//  DrawerPresentationTransition.swift
+//  SlidePresentationTransition.swift
 //  BasicDrawerViewController
 //
 //  Created by Lautaro de los Heros on 07/05/2022.
@@ -7,22 +7,22 @@
 
 import Foundation
 
-class DrawerPresentationTransition: NSObject, UIViewControllerAnimatedTransitioning {
+public class SlidePresentationTransition: NSObject, UIViewControllerAnimatedTransitioning {
     
-    let orientation: BasicDrawerViewController.Orientation
-    let duration: TimeInterval
+    private let orientation: BasicDrawerViewController.Orientation
+    private let duration: TimeInterval
     
-    init(orientation: BasicDrawerViewController.Orientation, duration: TimeInterval) {
+    public init(orientation: BasicDrawerViewController.Orientation, duration: TimeInterval) {
         self.orientation = orientation
         self.duration = duration
         super.init()
     }
     
-    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+    public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return duration
     }
 
-    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+    public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         let containerView = transitionContext.containerView
         let toView = transitionContext.view(forKey: .to)!
         toView.frame = containerView.frame
