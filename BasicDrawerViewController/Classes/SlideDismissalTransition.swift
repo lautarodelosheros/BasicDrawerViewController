@@ -11,10 +11,12 @@ public class SlideDismissalTransition: NSObject, UIViewControllerAnimatedTransit
     
     private let orientation: BasicDrawerViewController.Orientation
     private let duration: TimeInterval
+    private let restoresZoom: Bool
     
-    public init(orientation: BasicDrawerViewController.Orientation, duration: TimeInterval) {
+    public init(orientation: BasicDrawerViewController.Orientation, duration: TimeInterval, restoresZoom: Bool = false) {
         self.duration = duration
         self.orientation = orientation
+        self.restoresZoom = restoresZoom
         super.init()
     }
 
@@ -24,6 +26,7 @@ public class SlideDismissalTransition: NSObject, UIViewControllerAnimatedTransit
 
     public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         let containerView = transitionContext.containerView
+        let toViewController = transitionContext.viewController(forKey: .to)
         let fromView = transitionContext.view(forKey: .from)!
 
         containerView.addSubview(fromView)
@@ -42,6 +45,10 @@ public class SlideDismissalTransition: NSObject, UIViewControllerAnimatedTransit
                 fromView.frame.origin = CGPoint(x: 0, y: fromView.frame.height)
             }
             shadowView?.alpha = 0
+            if self.restoresZoom {
+                toViewController?.view.layer.cornerRadius = 0
+                toViewController?.view.transform = CGAffineTransform(scaleX: 1, y: 1)
+            }
         }, completion: { _ in
             fromView.removeFromSuperview()
             transitionContext.completeTransition(true)
