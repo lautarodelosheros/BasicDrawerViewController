@@ -9,13 +9,20 @@ import Foundation
 
 public class SlidePresentationTransition: NSObject, UIViewControllerAnimatedTransitioning {
     
+    private weak var fromViewController: UIViewController?
+    private let zoomOutScale = 0.94
+    private let zoomOutCornerRadius: CGFloat = 20
+    private var shadowView: UIView?
+    private let shadowAlpha: CGFloat
+    
     private let orientation: BasicDrawerViewController.Orientation
     private let duration: TimeInterval
     private let doesZoomOut: Bool
     
-    public init(orientation: BasicDrawerViewController.Orientation, duration: TimeInterval, doesZoomOut: Bool = false) {
+    public init(orientation: BasicDrawerViewController.Orientation, duration: TimeInterval, shadowAlpha: CGFloat = 0.6, doesZoomOut: Bool = false) {
         self.orientation = orientation
         self.duration = duration
+        self.shadowAlpha = shadowAlpha
         self.doesZoomOut = doesZoomOut
         super.init()
     }
@@ -26,7 +33,7 @@ public class SlidePresentationTransition: NSObject, UIViewControllerAnimatedTran
 
     public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         let containerView = transitionContext.containerView
-        let fromViewController = transitionContext.viewController(forKey: .from)
+        fromViewController = transitionContext.viewController(forKey: .from)
         let toView = transitionContext.view(forKey: .to)!
         toView.frame = containerView.frame
         
@@ -36,6 +43,7 @@ public class SlidePresentationTransition: NSObject, UIViewControllerAnimatedTran
         shadowView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         shadowView.backgroundColor = .black
         shadowView.alpha = 0
+        self.shadowView = shadowView
         
         containerView.addSubview(toView)
         switch orientation {
@@ -51,13 +59,28 @@ public class SlidePresentationTransition: NSObject, UIViewControllerAnimatedTran
 
         UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: {
             toView.frame.origin = .zero
-            shadowView.alpha = 0.5
+            shadowView.alpha = self.shadowAlpha
             if self.doesZoomOut {
-                fromViewController?.view.layer.cornerRadius = 20
-                fromViewController?.view.transform = CGAffineTransform(scaleX: 0.94, y: 0.94)
+                self.fromViewController?.view.layer.cornerRadius = self.zoomOutCornerRadius
+                self.fromViewController?.view.transform = CGAffineTransform(scaleX: self.zoomOutScale, y: self.zoomOutScale)
             }
         }, completion: { _ in
             transitionContext.completeTransition(true)
         })
+    }
+    
+    public func resetAnimation() {
+        shadowView?.alpha = shadowAlpha
+        if doesZoomOut {
+            fromViewController?.view.transform = CGAffineTransform(scaleX: zoomOutScale, y: zoomOutScale)
+        }
+    }
+    
+    public func animateAlongChange(in value: CGFloat) {
+        shadowView?.alpha = shadowAlpha * value
+        if doesZoomOut {
+            let scale = 1 - value + zoomOutScale * value
+            fromViewController?.view.transform = CGAffineTransform(scaleX: scale, y: scale)
+        }
     }
 }

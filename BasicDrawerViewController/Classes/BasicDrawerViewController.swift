@@ -90,12 +90,12 @@ public class BasicDrawerViewController: UIViewController {
     public var screenProportion: Double = 0.7
     public var bounceLeeway: Double = 10
     
-    public init(orientation: Orientation = .left, maximumSize: Double, presentDuration: TimeInterval = 0.25, dismissDuration: TimeInterval = 0.4, doesZoomOut: Bool = false, viewController: UIViewController) {
+    public init(orientation: Orientation = .left, maximumSize: Double, presentDuration: TimeInterval = 0.25, dismissDuration: TimeInterval = 0.4, shadowAlpha: CGFloat = 0.6, doesZoomOut: Bool = false, viewController: UIViewController) {
         self.orientation = orientation
         self.maximumSize = maximumSize
         self.viewController = viewController
         
-        presentTransition = SlidePresentationTransition(orientation: orientation, duration: presentDuration, doesZoomOut: doesZoomOut)
+        presentTransition = SlidePresentationTransition(orientation: orientation, duration: presentDuration, shadowAlpha: shadowAlpha, doesZoomOut: doesZoomOut)
         dismissTransition = SlideDismissalTransition(orientation: orientation, duration: dismissDuration, restoresZoom: doesZoomOut)
         
         super.init(nibName: String(describing: BasicDrawerViewController.self), bundle: Library.resourceBundle)
@@ -180,6 +180,7 @@ public class BasicDrawerViewController: UIViewController {
                 sizeConstraint.constant = drawerActualSize - difference
             } else {
                 movingConstraint.constant = -difference
+                presentTransition.animateAlongChange(in: (drawerActualSize - difference) / drawerActualSize)
             }
         case .ended:
             let velocity: CGFloat
@@ -201,6 +202,7 @@ public class BasicDrawerViewController: UIViewController {
                 movingConstraint.constant = 0
                 UIView.animate(withDuration: 0.2) {
                     self.view.layoutIfNeeded()
+                    self.presentTransition.resetAnimation()
                 }
             }
         case .cancelled:
