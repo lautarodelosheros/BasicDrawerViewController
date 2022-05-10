@@ -18,10 +18,10 @@
 		A7C8B69B71D1BC87322534BAD7BF6501 /* Pods-BasicDrawerViewController_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABC684852F028FBFB6BE79DE6CB8988 /* Pods-BasicDrawerViewController_Example-dummy.m */; };
 		AA1F91C81914FC416B5477D361DD0DC5 /* Pods-BasicDrawerViewController_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C2CF60F9B4659E2DE01BC9D6469B051 /* Pods-BasicDrawerViewController_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B3B6EAE96EC06C5A26DF708022EA867A /* Pods-BasicDrawerViewController_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 82157A4CD98430EB45C62A55CB53F2B8 /* Pods-BasicDrawerViewController_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B4077E0F121D88C52F8338F94C2CC32B /* DrawerDismissalTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EDA88028F293F79D8F15DCE8D735C0 /* DrawerDismissalTransition.swift */; };
+		B4077E0F121D88C52F8338F94C2CC32B /* SlideDismissalTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EDA88028F293F79D8F15DCE8D735C0 /* SlideDismissalTransition.swift */; };
 		BB2D4EA86EF88E56CA84D76BC2185881 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F46201DA0AF5DF6434F182D5EC88623 /* Library.swift */; };
 		BFD91C705ECD95203A66BD3E096A3CB7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		EB7BCA64FB7DB9290C23BBC75BF6F5E8 /* DrawerPresentationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1277162C552A0E36CFC1E01149A7127 /* DrawerPresentationTransition.swift */; };
+		EB7BCA64FB7DB9290C23BBC75BF6F5E8 /* SlidePresentationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1277162C552A0E36CFC1E01149A7127 /* SlidePresentationTransition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,7 +51,7 @@
 /* Begin PBXFileReference section */
 		02972102936F19F79AFDCA1E414FD5ED /* Pods-BasicDrawerViewController_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BasicDrawerViewController_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		03793914E017193E61477738A4E7FF6A /* BasicDrawerViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = BasicDrawerViewController.xib; path = BasicDrawerViewController/Assets/BasicDrawerViewController.xib; sourceTree = "<group>"; };
-		03EDA88028F293F79D8F15DCE8D735C0 /* DrawerDismissalTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DrawerDismissalTransition.swift; path = BasicDrawerViewController/Classes/DrawerDismissalTransition.swift; sourceTree = "<group>"; };
+		03EDA88028F293F79D8F15DCE8D735C0 /* SlideDismissalTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SlideDismissalTransition.swift; path = BasicDrawerViewController/Classes/SlideDismissalTransition.swift; sourceTree = "<group>"; };
 		0EBD3CCCBB09DBF5E1C7017CB7F2878A /* BasicDrawerViewController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BasicDrawerViewController-umbrella.h"; sourceTree = "<group>"; };
 		1301D767AD263078F15221A75DE0701F /* Pods-BasicDrawerViewController_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BasicDrawerViewController_Tests-Info.plist"; sourceTree = "<group>"; };
 		1DC2A1C5CD082C6C5E378FD45BEEBDC0 /* Pods-BasicDrawerViewController_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-BasicDrawerViewController_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -84,7 +84,7 @@
 		9618297BB66BC1DC16F4D699E7DEA476 /* Pods-BasicDrawerViewController_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-BasicDrawerViewController_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A1B8C7E284A90F7AE3AEAA6A0EC95B01 /* BasicDrawerViewController-BasicDrawerViewControllerBundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "BasicDrawerViewController-BasicDrawerViewControllerBundle"; path = BasicDrawerViewControllerBundle.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		C1277162C552A0E36CFC1E01149A7127 /* DrawerPresentationTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DrawerPresentationTransition.swift; path = BasicDrawerViewController/Classes/DrawerPresentationTransition.swift; sourceTree = "<group>"; };
+		C1277162C552A0E36CFC1E01149A7127 /* SlidePresentationTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SlidePresentationTransition.swift; path = BasicDrawerViewController/Classes/SlidePresentationTransition.swift; sourceTree = "<group>"; };
 		C5C7B03B0B144EECBF095CC84A9490E2 /* BasicDrawerViewController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BasicDrawerViewController-prefix.pch"; sourceTree = "<group>"; };
 		C9FCF7FDCF9CC498760A966C1ECD0CE6 /* Pods-BasicDrawerViewController_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BasicDrawerViewController_Example-frameworks.sh"; sourceTree = "<group>"; };
 		EA3A1B9B9C981DC7C6E9F34AA2A6D747 /* BasicDrawerViewController */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = BasicDrawerViewController; path = BasicDrawerViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,8 +158,8 @@
 			children = (
 				788DDD6F3EF0A0E3850DB9D6B35805F9 /* BasicDrawerViewController.swift */,
 				03793914E017193E61477738A4E7FF6A /* BasicDrawerViewController.xib */,
-				03EDA88028F293F79D8F15DCE8D735C0 /* DrawerDismissalTransition.swift */,
-				C1277162C552A0E36CFC1E01149A7127 /* DrawerPresentationTransition.swift */,
+				03EDA88028F293F79D8F15DCE8D735C0 /* SlideDismissalTransition.swift */,
+				C1277162C552A0E36CFC1E01149A7127 /* SlidePresentationTransition.swift */,
 				3F46201DA0AF5DF6434F182D5EC88623 /* Library.swift */,
 				CE48407B13FAFE37E671E7B0DF603768 /* Pod */,
 				F2E262BF2A53B1C41C6CECC83546FFE8 /* Support Files */,
@@ -451,8 +451,8 @@
 			files = (
 				8EBC0111E5A4A8FDCC7A3D43B82FA729 /* BasicDrawerViewController.swift in Sources */,
 				4A2D3CB655D76BFE623AE9D149FFBC77 /* BasicDrawerViewController-dummy.m in Sources */,
-				B4077E0F121D88C52F8338F94C2CC32B /* DrawerDismissalTransition.swift in Sources */,
-				EB7BCA64FB7DB9290C23BBC75BF6F5E8 /* DrawerPresentationTransition.swift in Sources */,
+				B4077E0F121D88C52F8338F94C2CC32B /* SlideDismissalTransition.swift in Sources */,
+				EB7BCA64FB7DB9290C23BBC75BF6F5E8 /* SlidePresentationTransition.swift in Sources */,
 				BB2D4EA86EF88E56CA84D76BC2185881 /* Library.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

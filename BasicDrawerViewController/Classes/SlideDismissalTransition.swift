@@ -1,5 +1,5 @@
 //
-//  DrawerDismissalTransition.swift
+//  SlideDismissalTransition.swift
 //  BasicDrawerViewController
 //
 //  Created by Lautaro de los Heros on 07/05/2022.
@@ -7,22 +7,22 @@
 
 import Foundation
 
-class DrawerDismissalTransition: NSObject, UIViewControllerAnimatedTransitioning {
+public class SlideDismissalTransition: NSObject, UIViewControllerAnimatedTransitioning {
     
-    let orientation: BasicDrawerViewController.Orientation
-    let duration: TimeInterval
+    private let orientation: BasicDrawerViewController.Orientation
+    private let duration: TimeInterval
     
-    init(orientation: BasicDrawerViewController.Orientation, duration: TimeInterval) {
+    public init(orientation: BasicDrawerViewController.Orientation, duration: TimeInterval) {
         self.duration = duration
         self.orientation = orientation
         super.init()
     }
 
-    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+    public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return duration
     }
 
-    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+    public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         let containerView = transitionContext.containerView
         let fromView = transitionContext.view(forKey: .from)!
 
