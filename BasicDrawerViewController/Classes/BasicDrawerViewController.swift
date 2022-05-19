@@ -89,6 +89,7 @@ public class BasicDrawerViewController: UIViewController {
     
     public var screenProportion: Double = 0.7
     public var bounceLeeway: Double = 10
+    private let sensitivityConstant: Double = 90
     
     public init(orientation: Orientation = .left, maximumSize: Double, presentDuration: TimeInterval = 0.25, dismissDuration: TimeInterval = 0.4, shadowAlpha: CGFloat = 0.6, doesZoomOut: Bool = false, viewController: UIViewController) {
         self.orientation = orientation
@@ -175,9 +176,9 @@ public class BasicDrawerViewController: UIViewController {
         case .began:
             panStartOffset = offset
         case .changed:
-            let difference = max(panStartOffset - offset, -bounceLeeway)
+            let difference = panStartOffset - offset
             if difference < 0 {
-                sizeConstraint.constant = drawerActualSize - difference
+                sizeConstraint.constant = drawerActualSize - bounceLeeway * tanh(difference / sensitivityConstant)
             } else {
                 movingConstraint.constant = -difference
                 presentTransition.animateAlongChange(in: (drawerActualSize - difference) / drawerActualSize)
