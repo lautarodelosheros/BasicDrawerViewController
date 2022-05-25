@@ -48,6 +48,7 @@ public class SlideDismissalTransition: NSObject, UIViewControllerAnimatedTransit
             if self.restoresZoom {
                 toViewController?.view.layer.cornerRadius = 0
                 toViewController?.view.transform = CGAffineTransform(scaleX: 1, y: 1)
+                toViewController?.view.frame = UIScreen.main.bounds
             }
         }, completion: { _ in
             fromView.removeFromSuperview()
