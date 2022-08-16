@@ -4,6 +4,12 @@
 [![License](https://img.shields.io/cocoapods/l/BasicDrawerViewController.svg?style=flat)](https://cocoapods.org/pods/BasicDrawerViewController)
 [![Platform](https://img.shields.io/cocoapods/p/BasicDrawerViewController.svg?style=flat)](https://cocoapods.org/pods/BasicDrawerViewController)
 
+This library provides a View Controller that shows up in a portion of the screen and can embed any other kind of View Controller.
+
+It also has a nice optional zoom animation (similar to the formSheet modal presentation animation), and an elastic effect when you drag to the opposite direction.
+
+Check out the demo below!
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
@@ -61,7 +67,7 @@ You can also refer to the example app on this repository.
 
 ## Demo
 
-![Screen Recording 2022-05-19 at 00 26 42](https://user-images.githubusercontent.com/14253506/169198350-c20acef0-1533-4ac7-b5a0-7c7119467446.gif)
+https://user-images.githubusercontent.com/14253506/185003248-7f2b48ea-78d7-4a4a-a848-0e45b3848018.mov
 
 ## Author
 
