@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     private var rightDrawerViewController: BasicDrawerViewController!
     private var topDrawerViewController: BasicDrawerViewController!
     private var bottomDrawerViewController: BasicDrawerViewController!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let exampleViewController1 = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: ExampleViewController.self))
@@ -44,6 +44,15 @@ class ViewController: UIViewController {
     
     @IBAction func showBottomDrawerButtonTouched(_ sender: Any) {
         present(bottomDrawerViewController, animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "slideTransitionSegueWithoutGesture" {
+            guard let segue = segue as? SlideTransitionSegue else {
+                return
+            }
+            segue.shouldDismissWithPanEdgeGesture = false
+        }
     }
 }
 

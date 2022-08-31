@@ -21,10 +21,10 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Qyn-s4-WcK">
-                                <rect key="frame" x="123" y="370.5" width="168" height="155"/>
+                                <rect key="frame" x="71" y="355" width="272.5" height="186"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O8P-7O-n3I">
-                                        <rect key="frame" x="0.0" y="0.0" width="168" height="31"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="272.5" height="31"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Show left drawer"/>
                                         <connections>
@@ -32,7 +32,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="III-zY-Nhx">
-                                        <rect key="frame" x="0.0" y="31" width="168" height="31"/>
+                                        <rect key="frame" x="0.0" y="31" width="272.5" height="31"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Show right drawer"/>
                                         <connections>
@@ -40,7 +40,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jmj-l2-GO0">
-                                        <rect key="frame" x="0.0" y="62" width="168" height="31"/>
+                                        <rect key="frame" x="0.0" y="62" width="272.5" height="31"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Show top drawer"/>
                                         <connections>
@@ -48,7 +48,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mpv-6Q-GeE">
-                                        <rect key="frame" x="0.0" y="93" width="168" height="31"/>
+                                        <rect key="frame" x="0.0" y="93" width="272.5" height="31"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Show bottom drawer"/>
                                         <connections>
@@ -56,11 +56,19 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UDg-JT-IaU">
-                                        <rect key="frame" x="0.0" y="124" width="168" height="31"/>
+                                        <rect key="frame" x="0.0" y="124" width="272.5" height="31"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Slide Transition Segue"/>
                                         <connections>
                                             <segue destination="KWI-qy-jNM" kind="presentation" identifier="slideTransitionSegue" customClass="SlideTransitionSegue" customModule="BasicDrawerViewController" modalPresentationStyle="overFullScreen" id="Xhy-jY-pvE"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7GV-tB-Gmo">
+                                        <rect key="frame" x="0.0" y="155" width="272.5" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Slide Transition Segue without gesture"/>
+                                        <connections>
+                                            <segue destination="KWI-qy-jNM" kind="presentation" identifier="slideTransitionSegueWithoutGesture" customClass="SlideTransitionSegue" customModule="BasicDrawerViewController" modalPresentationStyle="overFullScreen" id="0xu-sy-mH2"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -92,7 +100,13 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="euc-XY-Iiv">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
-                                    <navigationItem title="Example" id="bcf-it-qWy"/>
+                                    <navigationItem title="Example" id="bcf-it-qWy">
+                                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="done" id="jgd-NZ-8wA">
+                                            <connections>
+                                                <action selector="doneButtonTouched:" destination="KWI-qy-jNM" id="j8V-SO-miR"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1DD-VG-kZq">
@@ -117,6 +131,9 @@
             <point key="canvasLocation" x="898" y="133"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="0xu-sy-mH2"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemGray4Color">
             <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -7,7 +7,9 @@
 
 import UIKit
 
-class SlideTransitionSegue: UIStoryboardSegue {
+public class SlideTransitionSegue: UIStoryboardSegue {
+    
+    public var shouldDismissWithPanEdgeGesture = true
     
     private let slidePresentationTransition = SlidePresentationTransition(
         orientation: .right,
@@ -20,24 +22,26 @@ class SlideTransitionSegue: UIStoryboardSegue {
         restoresZoom: true
     )
     
-    override func perform() {
+    override public func perform() {
         destination.transitioningDelegate = self
         super.perform()
-        slideDismissalTransition.interactionController = SlideDismissInteractionController(viewController: destination)
+        if shouldDismissWithPanEdgeGesture {
+            slideDismissalTransition.interactionController = SlideDismissInteractionController(viewController: destination)
+        }
     }
 }
 
 extension SlideTransitionSegue: UIViewControllerTransitioningDelegate {
     
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         slidePresentationTransition
     }
 
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         slideDismissalTransition
     }
     
-    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+    public func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         guard let animator = animator as? SlideDismissalTransition,
               let interactionController = animator.interactionController,
               interactionController.interactionInProgress
