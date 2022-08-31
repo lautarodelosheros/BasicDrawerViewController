@@ -148,7 +148,7 @@ public class BasicDrawerViewController: UIViewController {
     }
     
     override public func viewWillAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+        super.viewWillAppear(animated)
         sizeConstraint.constant = drawerActualSize
     }
     
