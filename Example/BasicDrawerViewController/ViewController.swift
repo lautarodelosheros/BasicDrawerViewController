@@ -51,7 +51,7 @@ class ViewController: UIViewController {
             guard let segue = segue as? SlideTransitionSegue else {
                 return
             }
-            segue.shouldDismissWithPanEdgeGesture = false
+            segue.panEdgeGestureViewController = nil
         }
     }
 }

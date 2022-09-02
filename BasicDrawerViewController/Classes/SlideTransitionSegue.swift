@@ -9,7 +9,12 @@ import UIKit
 
 public class SlideTransitionSegue: UIStoryboardSegue {
     
-    public var shouldDismissWithPanEdgeGesture = true
+    public weak var panEdgeGestureViewController: UIViewController?
+    
+    override public init(identifier: String?, source: UIViewController, destination: UIViewController) {
+        super.init(identifier: identifier, source: source, destination: destination)
+        panEdgeGestureViewController = destination
+    }
     
     private let slidePresentationTransition = SlidePresentationTransition(
         orientation: .right,
@@ -25,8 +30,8 @@ public class SlideTransitionSegue: UIStoryboardSegue {
     override public func perform() {
         destination.transitioningDelegate = self
         super.perform()
-        if shouldDismissWithPanEdgeGesture {
-            slideDismissalTransition.interactionController = SlideDismissInteractionController(viewController: destination)
+        if let panEdgeGestureViewController = panEdgeGestureViewController {
+            slideDismissalTransition.interactionController = SlideDismissInteractionController(viewController: panEdgeGestureViewController)
         }
     }
 }

@@ -14,7 +14,7 @@ public class SlideDismissInteractionController: UIPercentDrivenInteractiveTransi
     private var shouldCompleteTransition = false
     private weak var viewController: UIViewController?
     
-    private let cancelSpeed = 0.15
+    private let cancelSpeed = 0.5
     
     public init(viewController: UIViewController) {
         self.viewController = viewController
@@ -35,19 +35,19 @@ public class SlideDismissInteractionController: UIPercentDrivenInteractiveTransi
             return
         }
         
+        let translation = gestureRecognizer.translation(in: view)
+        let progress = translation.x / (view.bounds.width * 4/3)
         switch gestureRecognizer.state {
         case .began:
             interactionInProgress = true
             viewController.dismiss(animated: true)
         case .changed:
             let velocity = gestureRecognizer.velocity(in: view).x
-            let translation = gestureRecognizer.translation(in: view)
-            let progress = translation.x / (view.bounds.width * 4/3)
             shouldCompleteTransition = velocity > 100 || progress > 0.5
             update(progress)
         case .cancelled:
             interactionInProgress = false
-            completionSpeed = cancelSpeed
+            completionSpeed = cancelSpeed * progress
             cancel()
         case .ended:
             interactionInProgress = false
@@ -55,7 +55,7 @@ public class SlideDismissInteractionController: UIPercentDrivenInteractiveTransi
                 completionSpeed = 1
                 finish()
             } else {
-                completionSpeed = cancelSpeed
+                completionSpeed = cancelSpeed * progress
                 cancel()
             }
         default:
