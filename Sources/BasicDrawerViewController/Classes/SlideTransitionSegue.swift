@@ -5,6 +5,7 @@
 //  Created by Lautaro de los Heros on 30/08/2022.
 //
 
+import Foundation
 import UIKit
 
 public class SlideTransitionSegue: UIStoryboardSegue {
