@@ -10,8 +10,6 @@ import Foundation
 final class Library {
     
     static let resourceBundle: Bundle = {
-        let myBundle = Bundle(for: Library.self)
-
         guard let resourceBundleURL = myBundle.url(
             forResource: "BasicDrawerViewControllerBundle", withExtension: "bundle")
             else { fatalError("BasicDrawerViewControllerBundle.bundle not found") }
@@ -20,5 +18,13 @@ final class Library {
             else { fatalError("Cannot access BasicDrawerViewControllerBundle.bundle") }
 
         return resourceBundle
+    }()
+    
+    private static let myBundle: Bundle = {
+        #if SWIFT_PACKAGE
+        return Bundle.module
+        #else
+        return Bundle(for: Library.self)
+        #endif
     }()
 }

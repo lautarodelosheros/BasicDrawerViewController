@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'BasicDrawerViewController'
-  s.version          = '0.3.1'
+  s.version          = '0.3.5'
   s.summary          = 'A simple Android-like Drawer implementation for iOS.'
   s.swift_version    = '5.0'
 
@@ -23,10 +23,10 @@ A simple Android-like Drawer implementation for iOS.
 
   s.ios.deployment_target = '9.0'
 
-  s.source_files = 'BasicDrawerViewController/Classes/**/*'
+  s.source_files = 'Sources/BasicDrawerViewController/Classes/**/*'
   
   s.resource_bundles = {
-    'BasicDrawerViewControllerBundle' => ['BasicDrawerViewController/Assets/**/*']
+    'BasicDrawerViewControllerBundle' => ['Sources/BasicDrawerViewController/Assets/**/*']
   }
   
 end
