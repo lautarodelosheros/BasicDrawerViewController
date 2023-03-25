@@ -1,6 +1,6 @@
 {
   "name": "BasicDrawerViewController",
-  "version": "0.1.0",
+  "version": "0.3.3",
   "summary": "A simple Android-like Drawer implementation for iOS.",
   "swift_versions": "5.0",
   "description": "A simple Android-like Drawer implementation for iOS.",
@@ -14,15 +14,15 @@
   },
   "source": {
     "git": "https://github.com/lautarodelosheros/BasicDrawerViewController",
-    "tag": "0.1.0"
+    "tag": "0.3.3"
   },
   "platforms": {
     "ios": "9.0"
   },
-  "source_files": "BasicDrawerViewController/Classes/**/*",
+  "source_files": "Sources/BasicDrawerViewController/Classes/**/*",
   "resource_bundles": {
     "BasicDrawerViewControllerBundle": [
-      "BasicDrawerViewController/Assets/**/*"
+      "Sources/BasicDrawerViewController/Assets/**/*"
     ]
   },
   "swift_version": "5.0"
