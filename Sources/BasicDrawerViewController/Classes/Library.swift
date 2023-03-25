@@ -19,10 +19,7 @@ final class Library {
     
     private static let myBundle: Bundle? = {
         #if SWIFT_PACKAGE
-        return Bundle(path: Bundle.module.path(
-            forResource: "\(Library.self)",
-            ofType: "bundle"
-        )!)
+        return Bundle.module
         #else
         return Bundle(url: Bundle(for: Library.self).url(
             forResource: "BasicDrawerViewControllerBundle",
