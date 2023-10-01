@@ -24,7 +24,12 @@ public class BasicDrawerViewController: UIViewController {
     
     private let orientation: Orientation
     private let maximumSize: Double
+    private let hidesStatusBar: Bool
     private let viewController: UIViewController
+    
+    public override var prefersStatusBarHidden: Bool {
+        hidesStatusBar
+    }
     
     private var drawerActualSize: CGFloat {
         get {
@@ -91,13 +96,32 @@ public class BasicDrawerViewController: UIViewController {
     public var bounceLeeway: Double = 10
     private let sensitivityConstant: Double = 90
     
-    public init(orientation: Orientation = .left, maximumSize: Double, presentDuration: TimeInterval = 0.25, dismissDuration: TimeInterval = 0.4, shadowAlpha: CGFloat = 0.6, doesZoomOut: Bool = false, viewController: UIViewController) {
+    public init(
+        orientation: Orientation = .left,
+        maximumSize: Double,
+        presentDuration: TimeInterval = 0.25,
+        dismissDuration: TimeInterval = 0.4,
+        shadowAlpha: CGFloat = 0.6,
+        doesZoomOut: Bool = false,
+        hidesStatusBar: Bool = false,
+        viewController: UIViewController
+    ) {
         self.orientation = orientation
         self.maximumSize = maximumSize
+        self.hidesStatusBar = hidesStatusBar
         self.viewController = viewController
         
-        presentTransition = SlidePresentationTransition(orientation: orientation, duration: presentDuration, shadowAlpha: shadowAlpha, doesZoomOut: doesZoomOut)
-        dismissTransition = SlideDismissalTransition(orientation: orientation, duration: dismissDuration, restoresZoom: doesZoomOut)
+        presentTransition = SlidePresentationTransition(
+            orientation: orientation,
+            duration: presentDuration,
+            shadowAlpha: shadowAlpha,
+            doesZoomOut: doesZoomOut
+        )
+        dismissTransition = SlideDismissalTransition(
+            orientation: orientation,
+            duration: dismissDuration,
+            restoresZoom: doesZoomOut
+        )
         
         super.init(nibName: String(describing: BasicDrawerViewController.self), bundle: Library.resourceBundle)
         
@@ -114,7 +138,7 @@ public class BasicDrawerViewController: UIViewController {
         setUpConstraints()
         setUpGestureRecognizers()
         setUpViewController()
-        
+        modalPresentationCapturesStatusBarAppearance = true
         sizeConstraint.constant = drawerActualSize
     }
     
@@ -231,7 +255,11 @@ public class BasicDrawerViewController: UIViewController {
 
 extension BasicDrawerViewController: UIViewControllerTransitioningDelegate {
     
-    public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    public func animationController(
+        forPresented presented: UIViewController,
+        presenting: UIViewController,
+        source: UIViewController
+    ) -> UIViewControllerAnimatedTransitioning? {
         presentTransition
     }
 
