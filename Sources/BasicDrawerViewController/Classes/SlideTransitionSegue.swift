@@ -32,14 +32,20 @@ public class SlideTransitionSegue: UIStoryboardSegue {
         destination.transitioningDelegate = self
         super.perform()
         if let panEdgeGestureViewController = panEdgeGestureViewController {
-            slideDismissalTransition.interactionController = SlideDismissInteractionController(viewController: panEdgeGestureViewController)
+            slideDismissalTransition.interactionController = SlideDismissInteractionController(
+                viewController: panEdgeGestureViewController
+            )
         }
     }
 }
 
 extension SlideTransitionSegue: UIViewControllerTransitioningDelegate {
     
-    public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    public func animationController(
+        forPresented presented: UIViewController,
+        presenting: UIViewController,
+        source: UIViewController
+    ) -> UIViewControllerAnimatedTransitioning? {
         slidePresentationTransition
     }
 
@@ -47,7 +53,9 @@ extension SlideTransitionSegue: UIViewControllerTransitioningDelegate {
         slideDismissalTransition
     }
     
-    public func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+    public func interactionControllerForDismissal(
+        using animator: UIViewControllerAnimatedTransitioning
+    ) -> UIViewControllerInteractiveTransitioning? {
         guard let animator = animator as? SlideDismissalTransition,
               let interactionController = animator.interactionController,
               interactionController.interactionInProgress

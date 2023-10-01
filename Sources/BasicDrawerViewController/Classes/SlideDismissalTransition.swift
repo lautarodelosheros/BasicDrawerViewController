@@ -13,16 +13,22 @@ public class SlideDismissalTransition: NSObject, UIViewControllerAnimatedTransit
     private let orientation: BasicDrawerViewController.Orientation
     private let duration: TimeInterval
     private let restoresZoom: Bool
-    var interactionController: SlideDismissInteractionController? = nil
+    public var interactionController: SlideDismissInteractionController? = nil
     
-    public init(orientation: BasicDrawerViewController.Orientation, duration: TimeInterval, restoresZoom: Bool = false) {
+    public init(
+        orientation: BasicDrawerViewController.Orientation,
+        duration: TimeInterval,
+        restoresZoom: Bool = false
+    ) {
         self.duration = duration
         self.orientation = orientation
         self.restoresZoom = restoresZoom
         super.init()
     }
 
-    public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+    public func transitionDuration(
+        using transitionContext: UIViewControllerContextTransitioning?
+    ) -> TimeInterval {
         return duration
     }
 

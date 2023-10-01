@@ -18,16 +18,49 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let exampleViewController1 = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: ExampleViewController.self))
-        let exampleViewController2 = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: ExampleViewController.self))
-        let exampleViewController3 = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: ExampleViewController.self))
-        let exampleViewController4 = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: ExampleViewController.self))
-        leftDrawerViewController = BasicDrawerViewController(orientation: .left, maximumSize: 320, doesZoomOut: true, viewController: exampleViewController1)
-        rightDrawerViewController = BasicDrawerViewController(orientation: .right, maximumSize: 320, viewController: exampleViewController2)
+        let exampleViewController1 = UIStoryboard(
+            name: "Main",
+            bundle: nil
+        ).instantiateViewController(withIdentifier: String(describing: ExampleViewController.self))
+        let exampleViewController2 = UIStoryboard(
+            name: "Main",
+            bundle: nil
+        ).instantiateViewController(withIdentifier: String(describing: ExampleViewController.self))
+        let exampleViewController3 = UIStoryboard(
+            name: "Main",
+            bundle: nil
+        ).instantiateViewController(withIdentifier: String(describing: ExampleViewController.self))
+        let exampleViewController4 = UIStoryboard(
+            name: "Main",
+            bundle: nil
+        ).instantiateViewController(withIdentifier: String(describing: ExampleViewController.self))
+        leftDrawerViewController = BasicDrawerViewController(
+            orientation: .left,
+            maximumSize: 320,
+            doesZoomOut: true,
+            hidesStatusBar: true,
+            viewController: exampleViewController1
+        )
+        rightDrawerViewController = BasicDrawerViewController(
+            orientation: .right,
+            maximumSize: 320,
+            viewController: exampleViewController2
+        )
         rightDrawerViewController.bounceLeeway = 36
         rightDrawerViewController.screenProportion = 0.5
-        topDrawerViewController = BasicDrawerViewController(orientation: .top, maximumSize: 500, presentDuration: 0.7, dismissDuration: 0.8, doesZoomOut: true, viewController: exampleViewController3)
-        bottomDrawerViewController = BasicDrawerViewController(orientation: .bottom, maximumSize: 500, viewController: exampleViewController4)
+        topDrawerViewController = BasicDrawerViewController(
+            orientation: .top,
+            maximumSize: 500,
+            presentDuration: 0.7,
+            dismissDuration: 0.8,
+            doesZoomOut: true,
+            viewController: exampleViewController3
+        )
+        bottomDrawerViewController = BasicDrawerViewController(
+            orientation: .bottom,
+            maximumSize: 500,
+            viewController: exampleViewController4
+        )
     }
 
     @IBAction func showLeftDrawerButtonTouched(_ sender: Any) {
