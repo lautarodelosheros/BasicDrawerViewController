@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class BasicDrawerViewController: UIViewController {
+open class BasicDrawerViewController: UIViewController {
 
     @IBOutlet weak var drawerView: UIView!
     @IBOutlet weak var drawerLeadingConstraint: NSLayoutConstraint!
@@ -129,7 +129,7 @@ public class BasicDrawerViewController: UIViewController {
         transitioningDelegate = self
     }
     
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         fatalError("Coder initialization not implemented.")
     }
     
