@@ -11,18 +11,18 @@ import UIKit
 public class SlideDismissalTransition: NSObject, UIViewControllerAnimatedTransitioning {
     
     private let orientation: BasicDrawerViewController.Orientation
+    private let transitionAnimation: BasicDrawerViewController.TransitionAnimation
     private let duration: TimeInterval
-    private let restoresZoom: Bool
     public var interactionController: SlideDismissInteractionController? = nil
     
     public init(
         orientation: BasicDrawerViewController.Orientation,
-        duration: TimeInterval,
-        restoresZoom: Bool = false
+        transitionAnimation: BasicDrawerViewController.TransitionAnimation,
+        duration: TimeInterval
     ) {
         self.duration = duration
         self.orientation = orientation
-        self.restoresZoom = restoresZoom
+        self.transitionAnimation = transitionAnimation
         super.init()
     }
 
@@ -42,25 +42,32 @@ public class SlideDismissalTransition: NSObject, UIViewControllerAnimatedTransit
         let shadowView = containerView.subviews.first(where: { $0.tag == 1 })
         let duration = transitionDuration(using: transitionContext)
         UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: {
-            switch self.orientation {
-            case .left:
-                fromView.frame.origin = CGPoint(x: -fromView.frame.width, y: 0)
-            case .right:
-                fromView.frame.origin = CGPoint(x: fromView.frame.width, y: 0)
-            case .top:
-                fromView.frame.origin = CGPoint(x: 0, y: -fromView.frame.height)
-            case .bottom:
-                fromView.frame.origin = CGPoint(x: 0, y: fromView.frame.height)
-            }
+            fromView.frame.origin = self.calculateOrigin(for: fromView)
             shadowView?.alpha = 0
-            if self.restoresZoom {
+            switch self.transitionAnimation {
+            case .zoom:
                 let view = toViewController?.view
                 view?.layer.cornerRadius = 0
                 view?.transform = CGAffineTransform(scaleX: 1, y: 1)
                 view?.frame = view?.window?.frame ?? UIScreen.main.bounds
+            case .none:
+                break
             }
         }, completion: { completed in
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         })
+    }
+    
+    private func calculateOrigin(for view: UIView) -> CGPoint {
+        switch self.orientation {
+        case .left:
+            CGPoint(x: -view.frame.width, y: 0)
+        case .right:
+            CGPoint(x: view.frame.width, y: 0)
+        case .top:
+            CGPoint(x: 0, y: -view.frame.height)
+        case .bottom:
+            CGPoint(x: 0, y: view.frame.height)
+        }
     }
 }

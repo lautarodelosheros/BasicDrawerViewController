@@ -36,8 +36,8 @@ class ViewController: UIViewController {
         ).instantiateViewController(withIdentifier: String(describing: ExampleViewController.self))
         leftDrawerViewController = BasicDrawerViewController(
             orientation: .left,
+            transitionAnimation: .zoom,
             maximumSize: 320,
-            doesZoomOut: true,
             hidesStatusBar: true,
             viewController: exampleViewController1
         )
@@ -50,10 +50,10 @@ class ViewController: UIViewController {
         rightDrawerViewController.screenProportion = 0.5
         topDrawerViewController = BasicDrawerViewController(
             orientation: .top,
+            transitionAnimation: .zoom,
             maximumSize: 500,
             presentDuration: 0.7,
             dismissDuration: 0.8,
-            doesZoomOut: true,
             viewController: exampleViewController3
         )
         bottomDrawerViewController = BasicDrawerViewController(

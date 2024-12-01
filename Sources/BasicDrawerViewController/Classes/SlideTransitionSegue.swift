@@ -19,13 +19,13 @@ public class SlideTransitionSegue: UIStoryboardSegue {
     
     private let slidePresentationTransition = SlidePresentationTransition(
         orientation: .right,
-        duration: 0.3,
-        doesZoomOut: true
+        transitionAnimation: .zoom,
+        duration: 0.3
     )
     private let slideDismissalTransition = SlideDismissalTransition(
         orientation: .right,
-        duration: 0.3,
-        restoresZoom: true
+        transitionAnimation: .zoom,
+        duration: 0.3
     )
     
     override public func perform() {

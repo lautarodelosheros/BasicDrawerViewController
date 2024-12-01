@@ -8,7 +8,7 @@
 import UIKit
 
 open class BasicDrawerViewController: UIViewController {
-
+    
     @IBOutlet weak var drawerView: UIView!
     @IBOutlet weak var drawerLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var drawerTrailingConstraint: NSLayoutConstraint!
@@ -23,6 +23,7 @@ open class BasicDrawerViewController: UIViewController {
     private let dismissTransition: SlideDismissalTransition
     
     private let orientation: Orientation
+    private let transitionAnimation: TransitionAnimation
     private let maximumSize: Double
     private let hidesStatusBar: Bool
     private let viewController: UIViewController
@@ -98,29 +99,30 @@ open class BasicDrawerViewController: UIViewController {
     
     public init(
         orientation: Orientation = .left,
+        transitionAnimation: TransitionAnimation = .none,
         maximumSize: Double,
         presentDuration: TimeInterval = 0.25,
         dismissDuration: TimeInterval = 0.4,
         shadowAlpha: CGFloat = 0.6,
-        doesZoomOut: Bool = false,
         hidesStatusBar: Bool = false,
         viewController: UIViewController
     ) {
         self.orientation = orientation
+        self.transitionAnimation = transitionAnimation
         self.maximumSize = maximumSize
         self.hidesStatusBar = hidesStatusBar
         self.viewController = viewController
         
         presentTransition = SlidePresentationTransition(
             orientation: orientation,
+            transitionAnimation: transitionAnimation,
             duration: presentDuration,
-            shadowAlpha: shadowAlpha,
-            doesZoomOut: doesZoomOut
+            shadowAlpha: shadowAlpha
         )
         dismissTransition = SlideDismissalTransition(
             orientation: orientation,
-            duration: dismissDuration,
-            restoresZoom: doesZoomOut
+            transitionAnimation: transitionAnimation,
+            duration: dismissDuration
         )
         
         super.init(nibName: String(describing: BasicDrawerViewController.self), bundle: Library.resourceBundle)
@@ -250,6 +252,11 @@ open class BasicDrawerViewController: UIViewController {
         case right
         case top
         case bottom
+    }
+    
+    public enum TransitionAnimation {
+        case zoom
+        case none
     }
 }
 

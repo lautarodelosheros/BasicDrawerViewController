@@ -11,25 +11,26 @@ import UIKit
 public class SlidePresentationTransition: NSObject, UIViewControllerAnimatedTransitioning {
     
     private weak var fromViewController: UIViewController?
-    private let zoomOutScale = 0.94
-    private let zoomOutCornerRadius: CGFloat = 20
     private var shadowView: UIView?
     private let shadowAlpha: CGFloat
     
     private let orientation: BasicDrawerViewController.Orientation
+    private let transitionAnimation: BasicDrawerViewController.TransitionAnimation
     private let duration: TimeInterval
-    private let doesZoomOut: Bool
+    
+    private let zoomOutScale = 0.94
+    private let zoomOutCornerRadius: CGFloat = 60
     
     public init(
         orientation: BasicDrawerViewController.Orientation,
+        transitionAnimation: BasicDrawerViewController.TransitionAnimation,
         duration: TimeInterval,
-        shadowAlpha: CGFloat = 0.6,
-        doesZoomOut: Bool = false
+        shadowAlpha: CGFloat = 0.6
     ) {
         self.orientation = orientation
+        self.transitionAnimation = transitionAnimation
         self.duration = duration
         self.shadowAlpha = shadowAlpha
-        self.doesZoomOut = doesZoomOut
         super.init()
     }
     
@@ -52,44 +53,57 @@ public class SlidePresentationTransition: NSObject, UIViewControllerAnimatedTran
         self.shadowView = shadowView
         
         containerView.addSubview(toView)
-        switch orientation {
-        case .left:
-            toView.frame.origin = CGPoint(x: -toView.frame.width, y: 0)
-        case .right:
-            toView.frame.origin = CGPoint(x: toView.frame.width, y: 0)
-        case .top:
-            toView.frame.origin = CGPoint(x: 0, y: -toView.frame.height)
-        case .bottom:
-            toView.frame.origin = CGPoint(x: 0, y: toView.frame.height)
-        }
+        toView.frame.origin = calculateOrigin(for: toView)
 
         UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: {
             toView.frame.origin = .zero
             shadowView.alpha = self.shadowAlpha
-            if self.doesZoomOut {
+            switch self.transitionAnimation {
+            case .zoom:
                 self.fromViewController?.view.layer.cornerRadius = self.zoomOutCornerRadius
                 self.fromViewController?.view.transform = CGAffineTransform(
                     scaleX: self.zoomOutScale,
                     y: self.zoomOutScale
                 )
+            case .none:
+                break
             }
         }, completion: { _ in
             transitionContext.completeTransition(true)
         })
     }
     
+    private func calculateOrigin(for view: UIView) -> CGPoint {
+        switch orientation {
+        case .left:
+            CGPoint(x: -view.frame.width, y: 0)
+        case .right:
+            CGPoint(x: view.frame.width, y: 0)
+        case .top:
+            CGPoint(x: 0, y: -view.frame.height)
+        case .bottom:
+            CGPoint(x: 0, y: view.frame.height)
+        }
+    }
+    
     public func resetAnimation() {
         shadowView?.alpha = shadowAlpha
-        if doesZoomOut {
+        switch transitionAnimation {
+        case .zoom:
             fromViewController?.view.transform = CGAffineTransform(scaleX: zoomOutScale, y: zoomOutScale)
+        case .none:
+            break
         }
     }
     
     public func animateAlongChange(in value: CGFloat) {
         shadowView?.alpha = shadowAlpha * value
-        if doesZoomOut {
+        switch transitionAnimation {
+        case .zoom:
             let scale = 1 - value + zoomOutScale * value
             fromViewController?.view.transform = CGAffineTransform(scaleX: scale, y: scale)
+        case .none:
+            break
         }
     }
 }
