@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'BasicDrawerViewController'
-  s.version          = '0.3.11'
+  s.version          = '0.4.0'
   s.summary          = 'A simple Android-like Drawer implementation for iOS.'
   s.swift_version    = '5.0'
 
