@@ -36,10 +36,10 @@ func setUpDrawer() {
     let viewController = CustomViewController() // This is the view controller that will get displayed inside the drawer.
     drawerViewController = BasicDrawerViewController(
         orientation: .left,
+        transitionAnimation: .zoom,
         maximumSize: 320,
         presentDuration: 0.7,
         dismissDuration: 0.8,
-        doesZoomOut: true,
         viewController: viewController
     )
     drawerViewController.bounceLeeway = 36
@@ -58,10 +58,10 @@ You can also refer to the example app on this repository.
 | Name | Description |
 | ------------- | ------------- |
 | orientation | The orientation of the Drawer. It can be left, right, top or bottom. |
+| transitionAnimation | The animation applied to the presenting View Controller. It can be a zoom animation, a similar animation to the one applied by a Navigation Controller, or no animation at all. |
 | maximumSize | The maximum width or height that the Drawer will ever take (Except for the elastic bounce leeway). |
 | presentDuration | The duration of the presentation animation. |
 | dismissDuration | The duration of the dismissal animation. |
-| doesZoomOut | Boolean that indicates if the presenting ViewController should zoom out (animated) when the Drawer appears. |
 | bounceLeeway | The extra width or height that the Drawer will expand in an elastic bounce fashion with the pan gesture. |
 | screenProportion | The maximum portion of the screen that the Drawer will ever take, so it will be shorter than the maximumSize if necessary. |
 
