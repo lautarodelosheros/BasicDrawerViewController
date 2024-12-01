@@ -43,6 +43,7 @@ class ViewController: UIViewController {
         )
         rightDrawerViewController = BasicDrawerViewController(
             orientation: .right,
+            transitionAnimation: .push,
             maximumSize: 320,
             viewController: exampleViewController2
         )

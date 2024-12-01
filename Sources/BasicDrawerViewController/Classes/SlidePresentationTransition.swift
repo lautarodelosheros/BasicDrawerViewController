@@ -20,6 +20,7 @@ public class SlidePresentationTransition: NSObject, UIViewControllerAnimatedTran
     
     private let zoomOutScale = 0.94
     private let zoomOutCornerRadius: CGFloat = 60
+    private let pushOffset: CGFloat = 120
     
     public init(
         orientation: BasicDrawerViewController.Orientation,
@@ -65,6 +66,8 @@ public class SlidePresentationTransition: NSObject, UIViewControllerAnimatedTran
                     scaleX: self.zoomOutScale,
                     y: self.zoomOutScale
                 )
+            case .push:
+                self.fromViewController?.view.frame.origin = self.calculatePushOrigin()
             case .none:
                 break
             }
@@ -86,11 +89,26 @@ public class SlidePresentationTransition: NSObject, UIViewControllerAnimatedTran
         }
     }
     
+    private func calculatePushOrigin(percentage: CGFloat = 1) -> CGPoint {
+        switch orientation {
+        case .left:
+            CGPoint(x: pushOffset * percentage, y: 0)
+        case .right:
+            CGPoint(x: -pushOffset * percentage, y: 0)
+        case .top:
+            CGPoint(x: 0, y: pushOffset * percentage)
+        case .bottom:
+            CGPoint(x: 0, y: -pushOffset * percentage)
+        }
+    }
+    
     public func resetAnimation() {
         shadowView?.alpha = shadowAlpha
         switch transitionAnimation {
         case .zoom:
             fromViewController?.view.transform = CGAffineTransform(scaleX: zoomOutScale, y: zoomOutScale)
+        case .push:
+            self.fromViewController?.view.frame.origin = self.calculatePushOrigin()
         case .none:
             break
         }
@@ -102,6 +120,8 @@ public class SlidePresentationTransition: NSObject, UIViewControllerAnimatedTran
         case .zoom:
             let scale = 1 - value + zoomOutScale * value
             fromViewController?.view.transform = CGAffineTransform(scaleX: scale, y: scale)
+        case .push:
+            self.fromViewController?.view.frame.origin = self.calculatePushOrigin(percentage: value)
         case .none:
             break
         }

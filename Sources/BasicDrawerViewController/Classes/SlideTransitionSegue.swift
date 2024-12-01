@@ -19,12 +19,13 @@ public class SlideTransitionSegue: UIStoryboardSegue {
     
     private let slidePresentationTransition = SlidePresentationTransition(
         orientation: .right,
-        transitionAnimation: .zoom,
-        duration: 0.3
+        transitionAnimation: .push,
+        duration: 0.3,
+        shadowAlpha: 0
     )
     private let slideDismissalTransition = SlideDismissalTransition(
         orientation: .right,
-        transitionAnimation: .zoom,
+        transitionAnimation: .push,
         duration: 0.3
     )
     

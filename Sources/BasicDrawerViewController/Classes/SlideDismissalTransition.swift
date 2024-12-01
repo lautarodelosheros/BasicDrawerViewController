@@ -46,10 +46,11 @@ public class SlideDismissalTransition: NSObject, UIViewControllerAnimatedTransit
             shadowView?.alpha = 0
             switch self.transitionAnimation {
             case .zoom:
-                let view = toViewController?.view
-                view?.layer.cornerRadius = 0
-                view?.transform = CGAffineTransform(scaleX: 1, y: 1)
-                view?.frame = view?.window?.frame ?? UIScreen.main.bounds
+                toViewController?.view.layer.cornerRadius = 0
+                toViewController?.view.transform = CGAffineTransform(scaleX: 1, y: 1)
+                toViewController?.view.frame = toViewController?.view.window?.frame ?? UIScreen.main.bounds
+            case .push:
+                toViewController?.view.frame.origin = .zero
             case .none:
                 break
             }

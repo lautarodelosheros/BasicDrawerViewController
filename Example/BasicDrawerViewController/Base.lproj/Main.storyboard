@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IHD-No-vXd">
     <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,10 +21,10 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Qyn-s4-WcK">
-                                <rect key="frame" x="71" y="355" width="272.5" height="186"/>
+                                <rect key="frame" x="49" y="327.5" width="316.5" height="241.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O8P-7O-n3I">
-                                        <rect key="frame" x="0.0" y="0.0" width="272.5" height="31"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="316.5" height="34.5"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Show left drawer"/>
                                         <connections>
@@ -32,7 +32,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="III-zY-Nhx">
-                                        <rect key="frame" x="0.0" y="31" width="272.5" height="31"/>
+                                        <rect key="frame" x="0.0" y="34.5" width="316.5" height="34.5"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Show right drawer"/>
                                         <connections>
@@ -40,7 +40,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jmj-l2-GO0">
-                                        <rect key="frame" x="0.0" y="62" width="272.5" height="31"/>
+                                        <rect key="frame" x="0.0" y="69" width="316.5" height="34.5"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Show top drawer"/>
                                         <connections>
@@ -48,7 +48,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mpv-6Q-GeE">
-                                        <rect key="frame" x="0.0" y="93" width="272.5" height="31"/>
+                                        <rect key="frame" x="0.0" y="103.5" width="316.5" height="34.5"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Show bottom drawer"/>
                                         <connections>
@@ -56,7 +56,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UDg-JT-IaU">
-                                        <rect key="frame" x="0.0" y="124" width="272.5" height="31"/>
+                                        <rect key="frame" x="0.0" y="138" width="316.5" height="34.5"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Slide Transition Segue"/>
                                         <connections>
@@ -64,11 +64,19 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7GV-tB-Gmo">
-                                        <rect key="frame" x="0.0" y="155" width="272.5" height="31"/>
+                                        <rect key="frame" x="0.0" y="172.5" width="316.5" height="34.5"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Slide Transition Segue without gesture"/>
                                         <connections>
                                             <segue destination="KWI-qy-jNM" kind="presentation" identifier="slideTransitionSegueWithoutGesture" customClass="SlideTransitionSegue" customModule="BasicDrawerViewController" modalPresentationStyle="overFullScreen" id="0xu-sy-mH2"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SXm-UA-d3q">
+                                        <rect key="frame" x="0.0" y="207" width="316.5" height="34.5"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Push a view controller"/>
+                                        <connections>
+                                            <segue destination="bEs-fM-U1M" kind="show" id="xMx-J2-CJ0"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -80,10 +88,42 @@
                             <constraint firstItem="Qyn-s4-WcK" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="jx7-an-VzW"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="IXZ-eC-kx6"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="66" y="133"/>
+            <point key="canvasLocation" x="975.36231884057975" y="132.58928571428572"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="JzI-vI-sn3">
+            <objects>
+                <viewController id="bEs-fM-U1M" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zuc-IU-zkN"/>
+                        <viewControllerLayoutGuide type="bottom" id="JRr-oz-P7i"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="J7u-ea-xla">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is getting pushed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KWi-NY-NDY">
+                                <rect key="frame" x="123" y="437.5" width="168.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                        <constraints>
+                            <constraint firstItem="KWi-NY-NDY" firstAttribute="centerY" secondItem="J7u-ea-xla" secondAttribute="centerY" id="yTh-qx-W1U"/>
+                            <constraint firstItem="KWi-NY-NDY" firstAttribute="centerX" secondItem="J7u-ea-xla" secondAttribute="centerX" id="ywq-D8-PAH"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="nvG-hh-8Gn"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZWg-8d-kMV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="975" y="902"/>
         </scene>
         <!--Example View Controller-->
         <scene sceneID="gMy-Et-Itg">
@@ -98,7 +138,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="euc-XY-Iiv">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                 <items>
                                     <navigationItem title="Example" id="bcf-it-qWy">
                                         <barButtonItem key="leftBarButtonItem" style="done" systemItem="done" id="jgd-NZ-8wA">
@@ -110,7 +150,7 @@
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1DD-VG-kZq">
-                                <rect key="frame" x="158.5" y="432.5" width="97.5" height="31"/>
+                                <rect key="frame" x="152" y="431" width="110.5" height="34.5"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Test button"/>
                             </button>
@@ -128,15 +168,36 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lAC-9u-FwX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="898" y="133"/>
+            <point key="canvasLocation" x="1807.2463768115942" y="132.58928571428572"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="if6-xh-kQb">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IHD-No-vXd" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9N1-qy-v4y">
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="Zc2-fM-vEc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xt8-sa-8SJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="65.217391304347828" y="132.58928571428572"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="0xu-sy-mH2"/>
+        <segue reference="Xhy-jY-pvE"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemGray4Color">
             <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
