@@ -19,12 +19,14 @@ class ViewController: UIViewController {
     private let pushTransition = SlidePresentationTransition(
         orientation: .right,
         transitionAnimation: .push(offset: 120),
+        transitionViewTags: [44],
         duration: 0.25,
         shadowAlpha: 0
     )
     private let popTransition = SlideDismissalTransition(
         orientation: .right,
         transitionAnimation: .push(offset: 120),
+        transitionViewTags: [44],
         duration: 0.25
     )
     
@@ -72,6 +74,7 @@ class ViewController: UIViewController {
         )
         bottomDrawerViewController = BasicDrawerViewController(
             orientation: .bottom,
+            transitionAnimation: .push(offset: 100),
             maximumSize: 500,
             viewController: exampleViewController4
         )

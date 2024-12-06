@@ -12,6 +12,8 @@ public class SlideDismissalTransition: NSObject, UIViewControllerAnimatedTransit
     
     private let orientation: BasicDrawerViewController.Orientation
     private let transitionAnimation: BasicDrawerViewController.TransitionAnimation
+    private let transitionViewTags: [Int]
+    private var snapshotViews: [UIView] = []
     private let duration: TimeInterval
     public var interactionController: SlideDismissInteractionController? = nil
     
@@ -26,11 +28,13 @@ public class SlideDismissalTransition: NSObject, UIViewControllerAnimatedTransit
     public init(
         orientation: BasicDrawerViewController.Orientation,
         transitionAnimation: BasicDrawerViewController.TransitionAnimation,
+        transitionViewTags: [Int] = [],
         duration: TimeInterval
     ) {
         self.duration = duration
         self.orientation = orientation
         self.transitionAnimation = transitionAnimation
+        self.transitionViewTags = transitionViewTags
         super.init()
     }
 
@@ -50,8 +54,11 @@ public class SlideDismissalTransition: NSObject, UIViewControllerAnimatedTransit
 
         if transitionContext.presentationStyle == .none {
             containerView.addSubview(toViewController.view)
+            toViewController.view.frame.origin = calculatePushOrigin(for: toViewController.view)
         }
         containerView.addSubview(fromView)
+        
+        snapshotViews = createSnapshotViews(tags: transitionViewTags, transitionContext: transitionContext)
         
         let shadowView = containerView.subviews.first(where: { $0.tag == 1 })
         let duration = transitionDuration(using: transitionContext)
@@ -68,8 +75,9 @@ public class SlideDismissalTransition: NSObject, UIViewControllerAnimatedTransit
             case .none:
                 break
             }
-        }, completion: { completed in
+        }, completion: { [self] _ in
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+            removeSnapshotViews(tags: transitionViewTags, snapshotViews: snapshotViews, transitionContext: transitionContext)
         })
     }
     
@@ -83,6 +91,19 @@ public class SlideDismissalTransition: NSObject, UIViewControllerAnimatedTransit
             CGPoint(x: view.frame.origin.x, y: -view.frame.height)
         case .bottom:
             CGPoint(x: view.frame.origin.x, y: view.frame.height)
+        }
+    }
+    
+    private func calculatePushOrigin(for view: UIView) -> CGPoint {
+        switch self.orientation {
+        case .left:
+            CGPoint(x: pushOffset, y: view.frame.origin.y)
+        case .right:
+            CGPoint(x: -pushOffset, y: view.frame.origin.y)
+        case .top:
+            CGPoint(x: view.frame.origin.x, y: pushOffset)
+        case .bottom:
+            CGPoint(x: view.frame.origin.x, y: -pushOffset)
         }
     }
     

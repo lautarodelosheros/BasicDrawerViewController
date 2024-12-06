@@ -7,107 +7,116 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		093CA9B618662395D650D488FEAF8369 /* SlideDismissalTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE15B98928BF76181480A0F4986E9F9 /* SlideDismissalTransition.swift */; };
-		0E1705C3CBF2EFDD6368A2A60DFC2E26 /* BasicDrawerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FE66A7C070D6E3B3740B77EA81447F9 /* BasicDrawerViewController.xib */; };
+		0628D83F0D501F07E98D0BEE5DAA7FE5 /* UIViewControllerAnimatedTransitioningExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E653A06EDBB4E9ABBE60D6C724EFA3A9 /* UIViewControllerAnimatedTransitioningExtensions.swift */; };
 		101293CB9F140E1495912297AD3C0E5B /* Pods-BasicDrawerViewController_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CDA87AED16C616FEBFCB9B08917933 /* Pods-BasicDrawerViewController_Tests-dummy.m */; };
-		10597A7F9AC9773B41BA76AA5D43119F /* BasicDrawerViewController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 95AEEF62D5CC9A017F1AB23D5D320177 /* BasicDrawerViewController-dummy.m */; };
-		344C48291EE4C586D209CD96B07E04BE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		484C3E8F524CAA00ECCF0374F7744B9C /* SlideInteractionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5D1E98DABA515BC099A56E93F0AFED /* SlideInteractionController.swift */; };
-		50358418941F0110409BE9EC36E21134 /* BasicDrawerViewController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6760ED242906D36E277601B93BD466A2 /* BasicDrawerViewController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5A06AA12F629CE5EF7FC2F513660A0A0 /* BasicDrawerViewController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 831F86D29D9346B2163369B6D82CC456 /* BasicDrawerViewController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5D743CFC61EAC8E1C7D3A8CF004D929B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		7FF55D0B5AD17EC740B4EDF22C9B30F0 /* SlidePresentationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCEA54340F01A6DED1751C64EF28741 /* SlidePresentationTransition.swift */; };
-		A484D40667C9B5DEBF450CF0C722D2D2 /* BasicDrawerViewController-BasicDrawerViewControllerBundle in Resources */ = {isa = PBXBuildFile; fileRef = A1B8C7E284A90F7AE3AEAA6A0EC95B01 /* BasicDrawerViewController-BasicDrawerViewControllerBundle */; };
+		5F8C3F14C0F582C9DF84FC30B9C93991 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3183438B87BFC44C1B9E3C8C7F68C772 /* Library.swift */; };
+		689BD55FAB55AD5289A71A9B5FA29F20 /* SlideDismissalTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064BD6C8050E70B6371FCFD2913B6223 /* SlideDismissalTransition.swift */; };
+		73E2BE3A7C7DC5A8F2AD436775CDD022 /* BasicDrawerViewController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AA558F219EA30A0363D74AAE63882E3D /* BasicDrawerViewController-dummy.m */; };
+		7C3A29B43E40FE8B746AF21AFB3366F4 /* BasicDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957A8DBE964BA8209605B7ADE4DBC476 /* BasicDrawerViewController.swift */; };
+		85ED30FA52A2C6494C8785C054C7C799 /* SlideInteractionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8227ED500B6F2176573B31DCFB780E4 /* SlideInteractionController.swift */; };
+		978FF1AD1E9597C1228AA29D72469863 /* BasicDrawerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D509DB1FB2525C230B03C911C5044333 /* BasicDrawerViewController.xib */; };
 		A7C8B69B71D1BC87322534BAD7BF6501 /* Pods-BasicDrawerViewController_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABC684852F028FBFB6BE79DE6CB8988 /* Pods-BasicDrawerViewController_Example-dummy.m */; };
 		AA1F91C81914FC416B5477D361DD0DC5 /* Pods-BasicDrawerViewController_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C2CF60F9B4659E2DE01BC9D6469B051 /* Pods-BasicDrawerViewController_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B3B6EAE96EC06C5A26DF708022EA867A /* Pods-BasicDrawerViewController_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 82157A4CD98430EB45C62A55CB53F2B8 /* Pods-BasicDrawerViewController_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFD91C705ECD95203A66BD3E096A3CB7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		CF79231F63748EE602280D8F250C111C /* SlideTransitionSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF3A71EEE7522EE96A2813147A92B61 /* SlideTransitionSegue.swift */; };
-		F0C576C2AD8C36FEFF12783F0C4C8C0D /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E6A52FE1793EA08E1DF8859CCB1894 /* Library.swift */; };
-		F4BA8DC3591D1EDA3295FC67A0E4097A /* BasicDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B1F60D24DA8164F7D33F8297725A2F /* BasicDrawerViewController.swift */; };
+		C9F5BA0EA68DC8487FDB2F6988F0605E /* BasicDrawerViewController-BasicDrawerViewControllerBundle in Resources */ = {isa = PBXBuildFile; fileRef = A1B8C7E284A90F7AE3AEAA6A0EC95B01 /* BasicDrawerViewController-BasicDrawerViewControllerBundle */; };
+		E130CAF32631DB37ACDF78DF900D2AC2 /* SlidePresentationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE00B8C8B7E282046D45699CE32FC1B /* SlidePresentationTransition.swift */; };
+		E274F4926263DB8FF85C36278712CAFC /* SlideTransitionSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19995D70D3E85EF01367BB416F09B582 /* SlideTransitionSegue.swift */; };
+		E78AF5DA9BD6C813316A67FFA89C9978 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		D203A861EBA9D429F2436348C49FA96F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C9DE0D6A9C2976A74B9F984D9CF3F787;
-			remoteInfo = "Pods-BasicDrawerViewController_Example";
-		};
-		E56866A6B89C155AF4579657B5A965B6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 08094FB9246832ACC19A666DBDBEF6FA;
-			remoteInfo = "BasicDrawerViewController-BasicDrawerViewControllerBundle";
-		};
-		F3D3FCCB332DC44101F109A5C47B7B53 /* PBXContainerItemProxy */ = {
+		78E9E70B37394B00C9C35E374584AD8A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = CBF4E27EB738467ACC845C64E3CADFC1;
 			remoteInfo = BasicDrawerViewController;
 		};
+		B8F434EE89663A311E391009C96D958E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 08094FB9246832ACC19A666DBDBEF6FA;
+			remoteInfo = "BasicDrawerViewController-BasicDrawerViewControllerBundle";
+		};
+		BCD2691846098CA60FC1B4B140211217 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C9DE0D6A9C2976A74B9F984D9CF3F787;
+			remoteInfo = "Pods-BasicDrawerViewController_Example";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		02972102936F19F79AFDCA1E414FD5ED /* Pods-BasicDrawerViewController_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BasicDrawerViewController_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		0FE66A7C070D6E3B3740B77EA81447F9 /* BasicDrawerViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = BasicDrawerViewController.xib; path = Sources/BasicDrawerViewController/Assets/BasicDrawerViewController.xib; sourceTree = "<group>"; };
+		064BD6C8050E70B6371FCFD2913B6223 /* SlideDismissalTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SlideDismissalTransition.swift; path = Sources/BasicDrawerViewController/Classes/SlideDismissalTransition.swift; sourceTree = "<group>"; };
+		0BB936D36E4BAE5E94EAA416F4AFBB86 /* ResourceBundle-BasicDrawerViewControllerBundle-BasicDrawerViewController-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-BasicDrawerViewControllerBundle-BasicDrawerViewController-Info.plist"; sourceTree = "<group>"; };
 		1301D767AD263078F15221A75DE0701F /* Pods-BasicDrawerViewController_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BasicDrawerViewController_Tests-Info.plist"; sourceTree = "<group>"; };
-		191A8856DA04F5A59A68CA37EDD0095D /* BasicDrawerViewController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = BasicDrawerViewController.modulemap; sourceTree = "<group>"; };
+		19995D70D3E85EF01367BB416F09B582 /* SlideTransitionSegue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SlideTransitionSegue.swift; path = Sources/BasicDrawerViewController/Classes/SlideTransitionSegue.swift; sourceTree = "<group>"; };
 		1DC2A1C5CD082C6C5E378FD45BEEBDC0 /* Pods-BasicDrawerViewController_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-BasicDrawerViewController_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		22A62EF8892F0F1323AF1045E5158E9F /* BasicDrawerViewController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BasicDrawerViewController-prefix.pch"; sourceTree = "<group>"; };
-		2E5D1E98DABA515BC099A56E93F0AFED /* SlideInteractionController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SlideInteractionController.swift; path = Sources/BasicDrawerViewController/Classes/SlideInteractionController.swift; sourceTree = "<group>"; };
-		2F47D2436236559F6EB6636C5A421CEE /* BasicDrawerViewController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BasicDrawerViewController.debug.xcconfig; sourceTree = "<group>"; };
 		3177246F45686550BF40387CB350185B /* Pods-BasicDrawerViewController_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BasicDrawerViewController_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		3183438B87BFC44C1B9E3C8C7F68C772 /* Library.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Library.swift; path = Sources/BasicDrawerViewController/Classes/Library.swift; sourceTree = "<group>"; };
+		31BBE993AA43D1DD6077A34535BCDA0B /* BasicDrawerViewController-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "BasicDrawerViewController-Info.plist"; sourceTree = "<group>"; };
 		31D489C935B1D6FB41C4A364FDA02AA1 /* Pods-BasicDrawerViewController_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-BasicDrawerViewController_Example"; path = Pods_BasicDrawerViewController_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		36B3E67160F069F7F5F27C2301E7579E /* Pods-BasicDrawerViewController_Tests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-BasicDrawerViewController_Tests"; path = Pods_BasicDrawerViewController_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		38B2DB5FF765CD2D33D1B03261F529E2 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
 		394E6B4D66463A0C32418CAAF73C26BF /* Pods-BasicDrawerViewController_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-BasicDrawerViewController_Tests.modulemap"; sourceTree = "<group>"; };
 		3C2CF60F9B4659E2DE01BC9D6469B051 /* Pods-BasicDrawerViewController_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-BasicDrawerViewController_Tests-umbrella.h"; sourceTree = "<group>"; };
+		3FE3F37DA1B384D0062D3AF41D803939 /* BasicDrawerViewController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BasicDrawerViewController.release.xcconfig; sourceTree = "<group>"; };
+		41250FD6648398F68F696F253A343D50 /* BasicDrawerViewController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BasicDrawerViewController-prefix.pch"; sourceTree = "<group>"; };
 		4B9D3E3FDC6B021ECE85A1214B48A9FA /* Pods-BasicDrawerViewController_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BasicDrawerViewController_Example.release.xcconfig"; sourceTree = "<group>"; };
-		4F3A99FE7FCD2AD12DBF9101369FA103 /* BasicDrawerViewController.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = BasicDrawerViewController.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		4F741C2FE3CBF563C1510F1CD60BCA86 /* Pods-BasicDrawerViewController_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BasicDrawerViewController_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		51F7E594BE13C98F24F45C739C8FB3FB /* Pods-BasicDrawerViewController_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-BasicDrawerViewController_Example.modulemap"; sourceTree = "<group>"; };
 		524F26BDBDC34CDF64BDB7C0A9DF9015 /* Pods-BasicDrawerViewController_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BasicDrawerViewController_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		5733E55676820CD3DD154AF3B2B7BBF9 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
 		57CDA87AED16C616FEBFCB9B08917933 /* Pods-BasicDrawerViewController_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BasicDrawerViewController_Tests-dummy.m"; sourceTree = "<group>"; };
 		5ABC684852F028FBFB6BE79DE6CB8988 /* Pods-BasicDrawerViewController_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BasicDrawerViewController_Example-dummy.m"; sourceTree = "<group>"; };
 		5BDAEE956296DFCF331069601A8C7326 /* Pods-BasicDrawerViewController_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BasicDrawerViewController_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		5EF99EB880F9E25205CED95575D07B06 /* Pods-BasicDrawerViewController_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BasicDrawerViewController_Example-Info.plist"; sourceTree = "<group>"; };
-		6760ED242906D36E277601B93BD466A2 /* BasicDrawerViewController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BasicDrawerViewController-umbrella.h"; sourceTree = "<group>"; };
-		67E6A52FE1793EA08E1DF8859CCB1894 /* Library.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Library.swift; path = Sources/BasicDrawerViewController/Classes/Library.swift; sourceTree = "<group>"; };
-		6AF3A71EEE7522EE96A2813147A92B61 /* SlideTransitionSegue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SlideTransitionSegue.swift; path = Sources/BasicDrawerViewController/Classes/SlideTransitionSegue.swift; sourceTree = "<group>"; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		7872D3A768B4FB27C9CDA80AE1DF828B /* ResourceBundle-BasicDrawerViewControllerBundle-BasicDrawerViewController-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-BasicDrawerViewControllerBundle-BasicDrawerViewController-Info.plist"; sourceTree = "<group>"; };
-		7BCEA54340F01A6DED1751C64EF28741 /* SlidePresentationTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SlidePresentationTransition.swift; path = Sources/BasicDrawerViewController/Classes/SlidePresentationTransition.swift; sourceTree = "<group>"; };
-		7F9AFDF1E53646A37CACE2662FD72AEA /* BasicDrawerViewController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BasicDrawerViewController.release.xcconfig; sourceTree = "<group>"; };
 		82157A4CD98430EB45C62A55CB53F2B8 /* Pods-BasicDrawerViewController_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-BasicDrawerViewController_Example-umbrella.h"; sourceTree = "<group>"; };
-		8F988F82D83E914066ABA368B0C02815 /* BasicDrawerViewController-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "BasicDrawerViewController-Info.plist"; sourceTree = "<group>"; };
-		95AEEF62D5CC9A017F1AB23D5D320177 /* BasicDrawerViewController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BasicDrawerViewController-dummy.m"; sourceTree = "<group>"; };
+		831F86D29D9346B2163369B6D82CC456 /* BasicDrawerViewController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BasicDrawerViewController-umbrella.h"; sourceTree = "<group>"; };
+		8452F52AF2D03ABDD5B1492012406515 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		89D3EFE940C99878F9262EFEDD7B1D92 /* BasicDrawerViewController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = BasicDrawerViewController.modulemap; sourceTree = "<group>"; };
+		957A8DBE964BA8209605B7ADE4DBC476 /* BasicDrawerViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BasicDrawerViewController.swift; path = Sources/BasicDrawerViewController/Classes/BasicDrawerViewController.swift; sourceTree = "<group>"; };
 		9618297BB66BC1DC16F4D699E7DEA476 /* Pods-BasicDrawerViewController_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-BasicDrawerViewController_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		9AE00B8C8B7E282046D45699CE32FC1B /* SlidePresentationTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SlidePresentationTransition.swift; path = Sources/BasicDrawerViewController/Classes/SlidePresentationTransition.swift; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9FA19BB8F9B811424264644C04BED54A /* BasicDrawerViewController.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = BasicDrawerViewController.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A1B8C7E284A90F7AE3AEAA6A0EC95B01 /* BasicDrawerViewController-BasicDrawerViewControllerBundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "BasicDrawerViewController-BasicDrawerViewControllerBundle"; path = BasicDrawerViewControllerBundle.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		BB518C229912B67AC56ECAC160A571A1 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		AA558F219EA30A0363D74AAE63882E3D /* BasicDrawerViewController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BasicDrawerViewController-dummy.m"; sourceTree = "<group>"; };
+		B8227ED500B6F2176573B31DCFB780E4 /* SlideInteractionController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SlideInteractionController.swift; path = Sources/BasicDrawerViewController/Classes/SlideInteractionController.swift; sourceTree = "<group>"; };
 		C9FCF7FDCF9CC498760A966C1ECD0CE6 /* Pods-BasicDrawerViewController_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BasicDrawerViewController_Example-frameworks.sh"; sourceTree = "<group>"; };
-		DEE15B98928BF76181480A0F4986E9F9 /* SlideDismissalTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SlideDismissalTransition.swift; path = Sources/BasicDrawerViewController/Classes/SlideDismissalTransition.swift; sourceTree = "<group>"; };
+		D509DB1FB2525C230B03C911C5044333 /* BasicDrawerViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = BasicDrawerViewController.xib; path = Sources/BasicDrawerViewController/Assets/BasicDrawerViewController.xib; sourceTree = "<group>"; };
+		E653A06EDBB4E9ABBE60D6C724EFA3A9 /* UIViewControllerAnimatedTransitioningExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIViewControllerAnimatedTransitioningExtensions.swift; path = Sources/BasicDrawerViewController/Classes/UIViewControllerAnimatedTransitioningExtensions.swift; sourceTree = "<group>"; };
 		EA3A1B9B9C981DC7C6E9F34AA2A6D747 /* BasicDrawerViewController */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = BasicDrawerViewController; path = BasicDrawerViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F3B1F60D24DA8164F7D33F8297725A2F /* BasicDrawerViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BasicDrawerViewController.swift; path = Sources/BasicDrawerViewController/Classes/BasicDrawerViewController.swift; sourceTree = "<group>"; };
+		FD59EDFFDE72C5975B01069666B38FF5 /* BasicDrawerViewController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BasicDrawerViewController.debug.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		04C46663B5DE00AAC4F546840DF0FDDA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				344C48291EE4C586D209CD96B07E04BE /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		05B20D127DA09704F990B26F6B798C27 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				5D743CFC61EAC8E1C7D3A8CF004D929B /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1D2893BC24AC14ADBAE3000A46F0AE44 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40B06CCAC27258C1D9F14329E4AA6D95 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E78AF5DA9BD6C813316A67FFA89C9978 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,16 +128,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8D971614721C4C5B10603D13DCF31F45 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1EF45884A0CA98EE1EAF9DC7A24EFA20 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				9FA19BB8F9B811424264644C04BED54A /* BasicDrawerViewController.podspec */,
+				38B2DB5FF765CD2D33D1B03261F529E2 /* LICENSE */,
+				8452F52AF2D03ABDD5B1492012406515 /* README.md */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		2A2C954A4D18A080763BAA3ADEDD719D /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				83D3BE9D89C36A18BCADB8AC15E3B2BE /* BasicDrawerViewController */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
 		2D588FF35C57876AACD339DC9E1A6A99 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -138,21 +158,20 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		5231D67F8955D0F3D34DB4D09DD16061 /* BasicDrawerViewController */ = {
+		32EA1F4C454C579561D7F73A94B821F2 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				F3B1F60D24DA8164F7D33F8297725A2F /* BasicDrawerViewController.swift */,
-				0FE66A7C070D6E3B3740B77EA81447F9 /* BasicDrawerViewController.xib */,
-				67E6A52FE1793EA08E1DF8859CCB1894 /* Library.swift */,
-				DEE15B98928BF76181480A0F4986E9F9 /* SlideDismissalTransition.swift */,
-				2E5D1E98DABA515BC099A56E93F0AFED /* SlideInteractionController.swift */,
-				7BCEA54340F01A6DED1751C64EF28741 /* SlidePresentationTransition.swift */,
-				6AF3A71EEE7522EE96A2813147A92B61 /* SlideTransitionSegue.swift */,
-				EE54B91EB8BB600D38E2794983658C03 /* Pod */,
-				D04DBEA8625D25988C406D0E4AAD24ED /* Support Files */,
+				89D3EFE940C99878F9262EFEDD7B1D92 /* BasicDrawerViewController.modulemap */,
+				AA558F219EA30A0363D74AAE63882E3D /* BasicDrawerViewController-dummy.m */,
+				31BBE993AA43D1DD6077A34535BCDA0B /* BasicDrawerViewController-Info.plist */,
+				41250FD6648398F68F696F253A343D50 /* BasicDrawerViewController-prefix.pch */,
+				831F86D29D9346B2163369B6D82CC456 /* BasicDrawerViewController-umbrella.h */,
+				FD59EDFFDE72C5975B01069666B38FF5 /* BasicDrawerViewController.debug.xcconfig */,
+				3FE3F37DA1B384D0062D3AF41D803939 /* BasicDrawerViewController.release.xcconfig */,
+				0BB936D36E4BAE5E94EAA416F4AFBB86 /* ResourceBundle-BasicDrawerViewControllerBundle-BasicDrawerViewController-Info.plist */,
 			);
-			name = BasicDrawerViewController;
-			path = ../..;
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/BasicDrawerViewController";
 			sourceTree = "<group>";
 		};
 		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
@@ -174,12 +193,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9524C9BAF223EDC1331DA59D57869D9B /* Development Pods */ = {
+		83D3BE9D89C36A18BCADB8AC15E3B2BE /* BasicDrawerViewController */ = {
 			isa = PBXGroup;
 			children = (
-				5231D67F8955D0F3D34DB4D09DD16061 /* BasicDrawerViewController */,
+				957A8DBE964BA8209605B7ADE4DBC476 /* BasicDrawerViewController.swift */,
+				D509DB1FB2525C230B03C911C5044333 /* BasicDrawerViewController.xib */,
+				3183438B87BFC44C1B9E3C8C7F68C772 /* Library.swift */,
+				064BD6C8050E70B6371FCFD2913B6223 /* SlideDismissalTransition.swift */,
+				B8227ED500B6F2176573B31DCFB780E4 /* SlideInteractionController.swift */,
+				9AE00B8C8B7E282046D45699CE32FC1B /* SlidePresentationTransition.swift */,
+				19995D70D3E85EF01367BB416F09B582 /* SlideTransitionSegue.swift */,
+				E653A06EDBB4E9ABBE60D6C724EFA3A9 /* UIViewControllerAnimatedTransitioningExtensions.swift */,
+				1EF45884A0CA98EE1EAF9DC7A24EFA20 /* Pod */,
+				32EA1F4C454C579561D7F73A94B821F2 /* Support Files */,
 			);
-			name = "Development Pods";
+			name = BasicDrawerViewController;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 		9E39BAD4F1F18E6AE7F004511EBF5F73 /* Pods-BasicDrawerViewController_Example */ = {
@@ -219,27 +248,11 @@
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
-				9524C9BAF223EDC1331DA59D57869D9B /* Development Pods */,
+				2A2C954A4D18A080763BAA3ADEDD719D /* Development Pods */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
 				666C8E64416835F89F4316C68BA0CF0A /* Products */,
 				2D588FF35C57876AACD339DC9E1A6A99 /* Targets Support Files */,
 			);
-			sourceTree = "<group>";
-		};
-		D04DBEA8625D25988C406D0E4AAD24ED /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				191A8856DA04F5A59A68CA37EDD0095D /* BasicDrawerViewController.modulemap */,
-				95AEEF62D5CC9A017F1AB23D5D320177 /* BasicDrawerViewController-dummy.m */,
-				8F988F82D83E914066ABA368B0C02815 /* BasicDrawerViewController-Info.plist */,
-				22A62EF8892F0F1323AF1045E5158E9F /* BasicDrawerViewController-prefix.pch */,
-				6760ED242906D36E277601B93BD466A2 /* BasicDrawerViewController-umbrella.h */,
-				2F47D2436236559F6EB6636C5A421CEE /* BasicDrawerViewController.debug.xcconfig */,
-				7F9AFDF1E53646A37CACE2662FD72AEA /* BasicDrawerViewController.release.xcconfig */,
-				7872D3A768B4FB27C9CDA80AE1DF828B /* ResourceBundle-BasicDrawerViewControllerBundle-BasicDrawerViewController-Info.plist */,
-			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/BasicDrawerViewController";
 			sourceTree = "<group>";
 		};
 		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
@@ -248,16 +261,6 @@
 				578452D2E740E91742655AC8F1636D1F /* iOS */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		EE54B91EB8BB600D38E2794983658C03 /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				4F3A99FE7FCD2AD12DBF9101369FA103 /* BasicDrawerViewController.podspec */,
-				BB518C229912B67AC56ECAC160A571A1 /* LICENSE */,
-				5733E55676820CD3DD154AF3B2B7BBF9 /* README.md */,
-			);
-			name = Pod;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,11 +274,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7164B9B93876C5CA604E6914EAE07994 /* Headers */ = {
+		B3B7FA5EC7B13BE4F24260B8E47A0988 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50358418941F0110409BE9EC36E21134 /* BasicDrawerViewController-umbrella.h in Headers */,
+				5A06AA12F629CE5EF7FC2F513660A0A0 /* BasicDrawerViewController-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,11 +295,11 @@
 /* Begin PBXNativeTarget section */
 		08094FB9246832ACC19A666DBDBEF6FA /* BasicDrawerViewController-BasicDrawerViewControllerBundle */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1666703E4344DDA42B76754D1AF90DEA /* Build configuration list for PBXNativeTarget "BasicDrawerViewController-BasicDrawerViewControllerBundle" */;
+			buildConfigurationList = 544C350B9F6DA4C6F1FA660762DDA25B /* Build configuration list for PBXNativeTarget "BasicDrawerViewController-BasicDrawerViewControllerBundle" */;
 			buildPhases = (
-				64A71D0E5123B50405D9E0B949E84330 /* Sources */,
-				8D971614721C4C5B10603D13DCF31F45 /* Frameworks */,
-				CFBB9DA4E03F97A9CCCD7F6DE3F8353C /* Resources */,
+				0AE134F8163114BFDB5BC6350F6EB40F /* Sources */,
+				1D2893BC24AC14ADBAE3000A46F0AE44 /* Frameworks */,
+				90AD0FCF468EB6C5332E342C0053555E /* Resources */,
 			);
 			buildRules = (
 			);
@@ -319,7 +322,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				B71FEDA7B0D35A08618D64F2EEB76BCE /* PBXTargetDependency */,
+				F0EA2A3D1D3200321EBB6DF1EE6AAF11 /* PBXTargetDependency */,
 			);
 			name = "Pods-BasicDrawerViewController_Tests";
 			productName = Pods_BasicDrawerViewController_Tests;
@@ -338,7 +341,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				BDE406F0B7982A566883022ADE87D351 /* PBXTargetDependency */,
+				05C13A7CAE18AA43E3F8405BAB157DD5 /* PBXTargetDependency */,
 			);
 			name = "Pods-BasicDrawerViewController_Example";
 			productName = Pods_BasicDrawerViewController_Example;
@@ -347,17 +350,17 @@
 		};
 		CBF4E27EB738467ACC845C64E3CADFC1 /* BasicDrawerViewController */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A88522602F11ACE33A3AE8CDB6D02821 /* Build configuration list for PBXNativeTarget "BasicDrawerViewController" */;
+			buildConfigurationList = 2867B7BBCF0EA15F2D7365F302E9F29C /* Build configuration list for PBXNativeTarget "BasicDrawerViewController" */;
 			buildPhases = (
-				7164B9B93876C5CA604E6914EAE07994 /* Headers */,
-				FC4C568799CA734676C889B4DC020315 /* Sources */,
-				04C46663B5DE00AAC4F546840DF0FDDA /* Frameworks */,
-				6A66D2D6A31E0096B88FA82922605836 /* Resources */,
+				B3B7FA5EC7B13BE4F24260B8E47A0988 /* Headers */,
+				2B228D521966F31FB7F964BB86447A62 /* Sources */,
+				40B06CCAC27258C1D9F14329E4AA6D95 /* Frameworks */,
+				B8340A7FA3495DCA29C963735B6818F7 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				706FCB02D0B0B2FBA4FF740BD9180D6A /* PBXTargetDependency */,
+				8673737FBE6F6FF3FFD625347FB2D6FE /* PBXTargetDependency */,
 			);
 			name = BasicDrawerViewController;
 			productName = BasicDrawerViewController;
@@ -402,11 +405,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6A66D2D6A31E0096B88FA82922605836 /* Resources */ = {
+		90AD0FCF468EB6C5332E342C0053555E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A484D40667C9B5DEBF450CF0C722D2D2 /* BasicDrawerViewController-BasicDrawerViewControllerBundle in Resources */,
+				978FF1AD1E9597C1228AA29D72469863 /* BasicDrawerViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,21 +420,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CFBB9DA4E03F97A9CCCD7F6DE3F8353C /* Resources */ = {
+		B8340A7FA3495DCA29C963735B6818F7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E1705C3CBF2EFDD6368A2A60DFC2E26 /* BasicDrawerViewController.xib in Resources */,
+				C9F5BA0EA68DC8487FDB2F6988F0605E /* BasicDrawerViewController-BasicDrawerViewControllerBundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		64A71D0E5123B50405D9E0B949E84330 /* Sources */ = {
+		0AE134F8163114BFDB5BC6350F6EB40F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2B228D521966F31FB7F964BB86447A62 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C3A29B43E40FE8B746AF21AFB3366F4 /* BasicDrawerViewController.swift in Sources */,
+				73E2BE3A7C7DC5A8F2AD436775CDD022 /* BasicDrawerViewController-dummy.m in Sources */,
+				5F8C3F14C0F582C9DF84FC30B9C93991 /* Library.swift in Sources */,
+				689BD55FAB55AD5289A71A9B5FA29F20 /* SlideDismissalTransition.swift in Sources */,
+				85ED30FA52A2C6494C8785C054C7C799 /* SlideInteractionController.swift in Sources */,
+				E130CAF32631DB37ACDF78DF900D2AC2 /* SlidePresentationTransition.swift in Sources */,
+				E274F4926263DB8FF85C36278712CAFC /* SlideTransitionSegue.swift in Sources */,
+				0628D83F0D501F07E98D0BEE5DAA7FE5 /* UIViewControllerAnimatedTransitioningExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,40 +469,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FC4C568799CA734676C889B4DC020315 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F4BA8DC3591D1EDA3295FC67A0E4097A /* BasicDrawerViewController.swift in Sources */,
-				10597A7F9AC9773B41BA76AA5D43119F /* BasicDrawerViewController-dummy.m in Sources */,
-				F0C576C2AD8C36FEFF12783F0C4C8C0D /* Library.swift in Sources */,
-				093CA9B618662395D650D488FEAF8369 /* SlideDismissalTransition.swift in Sources */,
-				484C3E8F524CAA00ECCF0374F7744B9C /* SlideInteractionController.swift in Sources */,
-				7FF55D0B5AD17EC740B4EDF22C9B30F0 /* SlidePresentationTransition.swift in Sources */,
-				CF79231F63748EE602280D8F250C111C /* SlideTransitionSegue.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		706FCB02D0B0B2FBA4FF740BD9180D6A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "BasicDrawerViewController-BasicDrawerViewControllerBundle";
-			target = 08094FB9246832ACC19A666DBDBEF6FA /* BasicDrawerViewController-BasicDrawerViewControllerBundle */;
-			targetProxy = E56866A6B89C155AF4579657B5A965B6 /* PBXContainerItemProxy */;
-		};
-		B71FEDA7B0D35A08618D64F2EEB76BCE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Pods-BasicDrawerViewController_Example";
-			target = C9DE0D6A9C2976A74B9F984D9CF3F787 /* Pods-BasicDrawerViewController_Example */;
-			targetProxy = D203A861EBA9D429F2436348C49FA96F /* PBXContainerItemProxy */;
-		};
-		BDE406F0B7982A566883022ADE87D351 /* PBXTargetDependency */ = {
+		05C13A7CAE18AA43E3F8405BAB157DD5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = BasicDrawerViewController;
 			target = CBF4E27EB738467ACC845C64E3CADFC1 /* BasicDrawerViewController */;
-			targetProxy = F3D3FCCB332DC44101F109A5C47B7B53 /* PBXContainerItemProxy */;
+			targetProxy = 78E9E70B37394B00C9C35E374584AD8A /* PBXContainerItemProxy */;
+		};
+		8673737FBE6F6FF3FFD625347FB2D6FE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "BasicDrawerViewController-BasicDrawerViewControllerBundle";
+			target = 08094FB9246832ACC19A666DBDBEF6FA /* BasicDrawerViewController-BasicDrawerViewControllerBundle */;
+			targetProxy = B8F434EE89663A311E391009C96D958E /* PBXContainerItemProxy */;
+		};
+		F0EA2A3D1D3200321EBB6DF1EE6AAF11 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-BasicDrawerViewController_Example";
+			target = C9DE0D6A9C2976A74B9F984D9CF3F787 /* Pods-BasicDrawerViewController_Example */;
+			targetProxy = BCD2691846098CA60FC1B4B140211217 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -620,22 +624,6 @@
 			};
 			name = Debug;
 		};
-		3B6264160435695BEA143C146B441FB5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2F47D2436236559F6EB6636C5A421CEE /* BasicDrawerViewController.debug.xcconfig */;
-			buildSettings = {
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/BasicDrawerViewController";
-				IBSC_MODULE = BasicDrawerViewController;
-				INFOPLIST_FILE = "Target Support Files/BasicDrawerViewController/ResourceBundle-BasicDrawerViewControllerBundle-BasicDrawerViewController-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				PRODUCT_NAME = BasicDrawerViewControllerBundle;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
 		47A3F3389D3C7AA001A9B8734FCA2245 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 02972102936F19F79AFDCA1E414FD5ED /* Pods-BasicDrawerViewController_Example.debug.xcconfig */;
@@ -701,10 +689,11 @@
 			};
 			name = Release;
 		};
-		9AC3D16D0FCF86123EB42B8CE664391A /* Release */ = {
+		818EB4E4A6D304214C94AA1E327EA625 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7F9AFDF1E53646A37CACE2662FD72AEA /* BasicDrawerViewController.release.xcconfig */;
+			baseConfigurationReference = 3FE3F37DA1B384D0062D3AF41D803939 /* BasicDrawerViewController.release.xcconfig */;
 			buildSettings = {
+				CODE_SIGNING_ALLOWED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/BasicDrawerViewController";
 				IBSC_MODULE = BasicDrawerViewController;
 				INFOPLIST_FILE = "Target Support Files/BasicDrawerViewController/ResourceBundle-BasicDrawerViewControllerBundle-BasicDrawerViewController-Info.plist";
@@ -717,9 +706,40 @@
 			};
 			name = Release;
 		};
-		A6BF39BDF5A946001F084BDDC72B0A6E /* Debug */ = {
+		A9D12CCB37176801B0F387F0779E93A9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2F47D2436236559F6EB6636C5A421CEE /* BasicDrawerViewController.debug.xcconfig */;
+			baseConfigurationReference = 3FE3F37DA1B384D0062D3AF41D803939 /* BasicDrawerViewController.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/BasicDrawerViewController/BasicDrawerViewController-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/BasicDrawerViewController/BasicDrawerViewController-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/BasicDrawerViewController/BasicDrawerViewController.modulemap";
+				PRODUCT_MODULE_NAME = BasicDrawerViewController;
+				PRODUCT_NAME = BasicDrawerViewController;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		C7EBEC69E6356465D00A00B593F9318E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD59EDFFDE72C5975B01069666B38FF5 /* BasicDrawerViewController.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -809,45 +829,31 @@
 			};
 			name = Release;
 		};
-		EEFFB7BCAC1231423D9313F921D919BA /* Release */ = {
+		F9ED7E721F96C6EA12FCA0FE27BEF8CA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7F9AFDF1E53646A37CACE2662FD72AEA /* BasicDrawerViewController.release.xcconfig */;
+			baseConfigurationReference = FD59EDFFDE72C5975B01069666B38FF5 /* BasicDrawerViewController.debug.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/BasicDrawerViewController/BasicDrawerViewController-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/BasicDrawerViewController/BasicDrawerViewController-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				CODE_SIGNING_ALLOWED = NO;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/BasicDrawerViewController";
+				IBSC_MODULE = BasicDrawerViewController;
+				INFOPLIST_FILE = "Target Support Files/BasicDrawerViewController/ResourceBundle-BasicDrawerViewControllerBundle-BasicDrawerViewController-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/BasicDrawerViewController/BasicDrawerViewController.modulemap";
-				PRODUCT_MODULE_NAME = BasicDrawerViewController;
-				PRODUCT_NAME = BasicDrawerViewController;
+				PRODUCT_NAME = BasicDrawerViewControllerBundle;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
+				WRAPPER_EXTENSION = bundle;
 			};
-			name = Release;
+			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1666703E4344DDA42B76754D1AF90DEA /* Build configuration list for PBXNativeTarget "BasicDrawerViewController-BasicDrawerViewControllerBundle" */ = {
+		2867B7BBCF0EA15F2D7365F302E9F29C /* Build configuration list for PBXNativeTarget "BasicDrawerViewController" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3B6264160435695BEA143C146B441FB5 /* Debug */,
-				9AC3D16D0FCF86123EB42B8CE664391A /* Release */,
+				C7EBEC69E6356465D00A00B593F9318E /* Debug */,
+				A9D12CCB37176801B0F387F0779E93A9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -861,20 +867,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		544C350B9F6DA4C6F1FA660762DDA25B /* Build configuration list for PBXNativeTarget "BasicDrawerViewController-BasicDrawerViewControllerBundle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F9ED7E721F96C6EA12FCA0FE27BEF8CA /* Debug */,
+				818EB4E4A6D304214C94AA1E327EA625 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		8B004D01EF992F1ECCF3E37803C22499 /* Build configuration list for PBXNativeTarget "Pods-BasicDrawerViewController_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				47A3F3389D3C7AA001A9B8734FCA2245 /* Debug */,
 				24114D99A690F560BDAE28A10483DE7D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A88522602F11ACE33A3AE8CDB6D02821 /* Build configuration list for PBXNativeTarget "BasicDrawerViewController" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A6BF39BDF5A946001F084BDDC72B0A6E /* Debug */,
-				EEFFB7BCAC1231423D9313F921D919BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

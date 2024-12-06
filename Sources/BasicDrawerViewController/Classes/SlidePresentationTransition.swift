@@ -16,6 +16,8 @@ public class SlidePresentationTransition: NSObject, UIViewControllerAnimatedTran
     
     private let orientation: BasicDrawerViewController.Orientation
     private let transitionAnimation: BasicDrawerViewController.TransitionAnimation
+    private let transitionViewTags: [Int]
+    private var snapshotViews: [UIView] = []
     private let duration: TimeInterval
     
     private var pushOffset: CGFloat {
@@ -29,11 +31,13 @@ public class SlidePresentationTransition: NSObject, UIViewControllerAnimatedTran
     public init(
         orientation: BasicDrawerViewController.Orientation,
         transitionAnimation: BasicDrawerViewController.TransitionAnimation,
+        transitionViewTags: [Int] = [],
         duration: TimeInterval,
         shadowAlpha: CGFloat = 0.6
     ) {
         self.orientation = orientation
         self.transitionAnimation = transitionAnimation
+        self.transitionViewTags = transitionViewTags
         self.duration = duration
         self.shadowAlpha = shadowAlpha
         super.init()
@@ -64,6 +68,8 @@ public class SlidePresentationTransition: NSObject, UIViewControllerAnimatedTran
         
         containerView.addSubview(toView)
         toView.frame.origin = calculateOrigin(for: toView)
+        
+        snapshotViews = createSnapshotViews(tags: transitionViewTags, transitionContext: transitionContext)
 
         UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: {
             toView.frame.origin = .zero
@@ -80,8 +86,9 @@ public class SlidePresentationTransition: NSObject, UIViewControllerAnimatedTran
             case .none:
                 break
             }
-        }, completion: { _ in
+        }, completion: { [self] _ in
             transitionContext.completeTransition(true)
+            removeSnapshotViews(tags: transitionViewTags, snapshotViews: snapshotViews, transitionContext: transitionContext)
         })
     }
     

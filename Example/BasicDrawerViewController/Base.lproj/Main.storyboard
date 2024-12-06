@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Main menu-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="BasicDrawerViewController_Example" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,6 +17,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <view tag="44" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="brO-xZ-dBL">
+                                <rect key="frame" x="40" y="92" width="334" height="12"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TRANSITION VIEW" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IHl-xl-A85">
+                                        <rect key="frame" x="120.5" y="0.0" width="93.5" height="12"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="12" id="LdM-5h-RTK"/>
+                                    <constraint firstItem="IHl-xl-A85" firstAttribute="centerX" secondItem="brO-xZ-dBL" secondAttribute="centerX" id="kGx-dU-Bif"/>
+                                    <constraint firstItem="IHl-xl-A85" firstAttribute="centerY" secondItem="brO-xZ-dBL" secondAttribute="centerY" id="uhM-qP-xu6"/>
+                                </constraints>
+                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Qyn-s4-WcK">
                                 <rect key="frame" x="49" y="327.5" width="316.5" height="241.5"/>
                                 <subviews>
@@ -83,10 +100,13 @@
                         <color key="backgroundColor" systemColor="systemGray4Color"/>
                         <constraints>
                             <constraint firstItem="Qyn-s4-WcK" firstAttribute="centerX" secondItem="8tc-lU-SXX" secondAttribute="centerX" id="EfW-XP-gFx"/>
+                            <constraint firstItem="brO-xZ-dBL" firstAttribute="leading" secondItem="8tc-lU-SXX" secondAttribute="leading" constant="40" id="Euk-AK-qiw"/>
+                            <constraint firstItem="brO-xZ-dBL" firstAttribute="top" secondItem="8tc-lU-SXX" secondAttribute="top" id="XA6-1b-FK9"/>
+                            <constraint firstItem="8tc-lU-SXX" firstAttribute="trailing" secondItem="brO-xZ-dBL" secondAttribute="trailing" constant="40" id="XRj-EN-PkX"/>
                             <constraint firstItem="Qyn-s4-WcK" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="jx7-an-VzW"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="IXZ-eC-kx6"/>
+                    <navigationItem key="navigationItem" title="Main menu" id="IXZ-eC-kx6"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
@@ -106,19 +126,29 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VEZ-WZ-JUg">
-                                <rect key="frame" x="0.0" y="92" width="414" height="12"/>
+                            <view tag="44" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VEZ-WZ-JUg">
+                                <rect key="frame" x="40" y="92" width="334" height="12"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TRANSITION VIEW" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yid-XQ-bPH">
+                                        <rect key="frame" x="120.5" y="0.0" width="93.5" height="12"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="12" id="3kz-08-nRp"/>
+                                    <constraint firstItem="Yid-XQ-bPH" firstAttribute="centerY" secondItem="VEZ-WZ-JUg" secondAttribute="centerY" id="ESa-Vo-Rr0"/>
+                                    <constraint firstItem="Yid-XQ-bPH" firstAttribute="centerX" secondItem="VEZ-WZ-JUg" secondAttribute="centerX" id="nAD-Tc-gfv"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Odr-Kn-MLT"/>
                         <color key="backgroundColor" red="0.28084025349650349" green="0.11497058395036337" blue="0.27295330282462632" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Odr-Kn-MLT" firstAttribute="trailing" secondItem="VEZ-WZ-JUg" secondAttribute="trailing" id="BHN-wN-Ic8"/>
-                            <constraint firstItem="VEZ-WZ-JUg" firstAttribute="leading" secondItem="Odr-Kn-MLT" secondAttribute="leading" id="cjf-xa-tun"/>
+                            <constraint firstItem="Odr-Kn-MLT" firstAttribute="trailing" secondItem="VEZ-WZ-JUg" secondAttribute="trailing" constant="40" id="BHN-wN-Ic8"/>
+                            <constraint firstItem="VEZ-WZ-JUg" firstAttribute="leading" secondItem="Odr-Kn-MLT" secondAttribute="leading" constant="40" id="cjf-xa-tun"/>
                             <constraint firstItem="VEZ-WZ-JUg" firstAttribute="top" secondItem="Odr-Kn-MLT" secondAttribute="top" id="mTV-Cy-g7A"/>
                             <constraint firstItem="KWi-NY-NDY" firstAttribute="centerY" secondItem="J7u-ea-xla" secondAttribute="centerY" id="yTh-qx-W1U"/>
                             <constraint firstItem="KWi-NY-NDY" firstAttribute="centerX" secondItem="Odr-Kn-MLT" secondAttribute="centerX" id="ywq-D8-PAH"/>
