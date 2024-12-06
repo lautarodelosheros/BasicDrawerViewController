@@ -20,14 +20,6 @@ public class SlidePresentationTransition: NSObject, UIViewControllerAnimatedTran
     private var snapshotViews: [UIView] = []
     private let duration: TimeInterval
     
-    private var pushOffset: CGFloat {
-        if case let .push(offset) = transitionAnimation {
-            return offset
-        } else {
-            return 0
-        }
-    }
-    
     public init(
         orientation: BasicDrawerViewController.Orientation,
         transitionAnimation: BasicDrawerViewController.TransitionAnimation,
@@ -81,8 +73,11 @@ public class SlidePresentationTransition: NSObject, UIViewControllerAnimatedTran
                     scaleX: scale,
                     y: scale
                 )
-            case .push:
-                fromViewController.view.frame.origin = self.calculatePushOrigin(for: fromViewController.view)
+            case .push(let offset):
+                fromViewController.view.frame.origin = self.calculatePushOrigin(
+                    for: fromViewController.view,
+                    offset: offset
+                )
             case .none:
                 break
             }
@@ -105,16 +100,16 @@ public class SlidePresentationTransition: NSObject, UIViewControllerAnimatedTran
         }
     }
     
-    private func calculatePushOrigin(for view: UIView, percentage: CGFloat = 1) -> CGPoint {
+    private func calculatePushOrigin(for view: UIView, offset: CGFloat, percentage: CGFloat = 1) -> CGPoint {
         switch orientation {
         case .left:
-            CGPoint(x: pushOffset * percentage, y: view.frame.origin.y)
+            CGPoint(x: offset * percentage, y: view.frame.origin.y)
         case .right:
-            CGPoint(x: -pushOffset * percentage, y: view.frame.origin.y)
+            CGPoint(x: -offset * percentage, y: view.frame.origin.y)
         case .top:
-            CGPoint(x: view.frame.origin.x, y: pushOffset * percentage)
+            CGPoint(x: view.frame.origin.x, y: offset * percentage)
         case .bottom:
-            CGPoint(x: view.frame.origin.x, y: -pushOffset * percentage)
+            CGPoint(x: view.frame.origin.x, y: -offset * percentage)
         }
     }
     
@@ -123,9 +118,9 @@ public class SlidePresentationTransition: NSObject, UIViewControllerAnimatedTran
         switch transitionAnimation {
         case .zoom(let scale, _):
             fromViewController?.view.transform = CGAffineTransform(scaleX: scale, y: scale)
-        case .push:
+        case .push(let offset):
             if let fromViewController {
-                fromViewController.view.frame.origin = self.calculatePushOrigin(for: fromViewController.view)
+                fromViewController.view.frame.origin = calculatePushOrigin(for: fromViewController.view, offset: offset)
             }
         case .none:
             break
@@ -138,9 +133,9 @@ public class SlidePresentationTransition: NSObject, UIViewControllerAnimatedTran
         case .zoom(let scale, _):
             let newScale = 1 - value + scale * value
             fromViewController?.view.transform = CGAffineTransform(scaleX: newScale, y: newScale)
-        case .push:
+        case .push(let offset):
             if let fromViewController {
-                fromViewController.view.frame.origin = self.calculatePushOrigin(for: fromViewController.view, percentage: value)
+                fromViewController.view.frame.origin = calculatePushOrigin(for: fromViewController.view, offset: offset, percentage: value)
             }
         case .none:
             break

@@ -17,14 +17,6 @@ public class SlideDismissalTransition: NSObject, UIViewControllerAnimatedTransit
     private let duration: TimeInterval
     public var interactionController: SlideDismissInteractionController? = nil
     
-    private var pushOffset: CGFloat {
-        if case let .push(offset) = transitionAnimation {
-            return offset
-        } else {
-            return 0
-        }
-    }
-    
     public init(
         orientation: BasicDrawerViewController.Orientation,
         transitionAnimation: BasicDrawerViewController.TransitionAnimation,
@@ -54,7 +46,12 @@ public class SlideDismissalTransition: NSObject, UIViewControllerAnimatedTransit
 
         if transitionContext.presentationStyle == .none {
             containerView.addSubview(toViewController.view)
-            toViewController.view.frame.origin = calculatePushOrigin(for: toViewController.view)
+            if case let .push(offset) = transitionAnimation {
+                toViewController.view.frame.origin = calculateDestinationOrigin(
+                    for: toViewController.view,
+                    offset: offset
+                )
+            }
         }
         containerView.addSubview(fromView)
         
@@ -71,7 +68,7 @@ public class SlideDismissalTransition: NSObject, UIViewControllerAnimatedTransit
                 toViewController.view.transform = CGAffineTransform(scaleX: 1, y: 1)
                 toViewController.view.frame = toViewController.view.window?.frame ?? UIScreen.main.bounds
             case .push:
-                toViewController.view.frame.origin = self.calculateDestinationOrigin(for: toViewController.view)
+                toViewController.view.frame.origin = self.calculateDestinationOrigin(for: toViewController.view, offset: 0)
             case .none:
                 break
             }
@@ -94,29 +91,16 @@ public class SlideDismissalTransition: NSObject, UIViewControllerAnimatedTransit
         }
     }
     
-    private func calculatePushOrigin(for view: UIView) -> CGPoint {
+    private func calculateDestinationOrigin(for view: UIView, offset: CGFloat) -> CGPoint {
         switch self.orientation {
         case .left:
-            CGPoint(x: pushOffset, y: view.frame.origin.y)
+            CGPoint(x: offset, y: view.frame.origin.y)
         case .right:
-            CGPoint(x: -pushOffset, y: view.frame.origin.y)
+            CGPoint(x: -offset, y: view.frame.origin.y)
         case .top:
-            CGPoint(x: view.frame.origin.x, y: pushOffset)
+            CGPoint(x: view.frame.origin.x, y: offset)
         case .bottom:
-            CGPoint(x: view.frame.origin.x, y: -pushOffset)
-        }
-    }
-    
-    private func calculateDestinationOrigin(for view: UIView) -> CGPoint {
-        switch self.orientation {
-        case .left:
-            CGPoint(x: 0, y: view.frame.origin.y)
-        case .right:
-            CGPoint(x: 0, y: view.frame.origin.y)
-        case .top:
-            CGPoint(x: view.frame.origin.x, y: 0)
-        case .bottom:
-            CGPoint(x: view.frame.origin.x, y: 0)
+            CGPoint(x: view.frame.origin.x, y: -offset)
         }
     }
 }
