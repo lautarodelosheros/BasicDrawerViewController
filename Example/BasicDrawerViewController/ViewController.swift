@@ -18,13 +18,13 @@ class ViewController: UIViewController {
 
     private let pushTransition = SlidePresentationTransition(
         orientation: .right,
-        transitionAnimation: .push,
+        transitionAnimation: .push(offset: 120),
         duration: 0.25,
         shadowAlpha: 0
     )
     private let popTransition = SlideDismissalTransition(
         orientation: .right,
-        transitionAnimation: .push,
+        transitionAnimation: .push(offset: 120),
         duration: 0.25
     )
     
@@ -49,14 +49,14 @@ class ViewController: UIViewController {
         ).instantiateViewController(withIdentifier: String(describing: ExampleViewController.self))
         leftDrawerViewController = BasicDrawerViewController(
             orientation: .left,
-            transitionAnimation: .zoom,
+            transitionAnimation: .zoom(scale: 0.94, cornerRadius: 60),
             maximumSize: 320,
             hidesStatusBar: true,
             viewController: exampleViewController1
         )
         rightDrawerViewController = BasicDrawerViewController(
             orientation: .right,
-            transitionAnimation: .push,
+            transitionAnimation: .push(offset: 120),
             maximumSize: 320,
             viewController: exampleViewController2
         )
@@ -64,7 +64,7 @@ class ViewController: UIViewController {
         rightDrawerViewController.screenProportion = 0.5
         topDrawerViewController = BasicDrawerViewController(
             orientation: .top,
-            transitionAnimation: .zoom,
+            transitionAnimation: .zoom(scale: 0.9, cornerRadius: 0),
             maximumSize: 500,
             presentDuration: 0.7,
             dismissDuration: 0.8,

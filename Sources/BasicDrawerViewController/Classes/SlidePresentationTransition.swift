@@ -18,9 +18,13 @@ public class SlidePresentationTransition: NSObject, UIViewControllerAnimatedTran
     private let transitionAnimation: BasicDrawerViewController.TransitionAnimation
     private let duration: TimeInterval
     
-    private let zoomOutScale = 0.94
-    private let zoomOutCornerRadius: CGFloat = 60
-    private let pushOffset: CGFloat = 120
+    private var pushOffset: CGFloat {
+        if case let .push(offset) = transitionAnimation {
+            return offset
+        } else {
+            return 0
+        }
+    }
     
     public init(
         orientation: BasicDrawerViewController.Orientation,
@@ -40,9 +44,14 @@ public class SlidePresentationTransition: NSObject, UIViewControllerAnimatedTran
     }
 
     public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        guard let fromViewController = transitionContext.viewController(forKey: .from),
+              let toView = transitionContext.view(forKey: .to)
+        else {
+            return
+        }
+        self.fromViewController = fromViewController
         let containerView = transitionContext.containerView
-        fromViewController = transitionContext.viewController(forKey: .from)
-        let toView = transitionContext.view(forKey: .to)!
+        
         toView.frame = containerView.frame
         
         let shadowView = UIView(frame: containerView.bounds)
@@ -60,14 +69,14 @@ public class SlidePresentationTransition: NSObject, UIViewControllerAnimatedTran
             toView.frame.origin = .zero
             shadowView.alpha = self.shadowAlpha
             switch self.transitionAnimation {
-            case .zoom:
-                self.fromViewController?.view.layer.cornerRadius = self.zoomOutCornerRadius
-                self.fromViewController?.view.transform = CGAffineTransform(
-                    scaleX: self.zoomOutScale,
-                    y: self.zoomOutScale
+            case .zoom(let scale, let cornerRadius):
+                fromViewController.view.layer.cornerRadius = cornerRadius
+                fromViewController.view.transform = CGAffineTransform(
+                    scaleX: scale,
+                    y: scale
                 )
             case .push:
-                self.fromViewController?.view.frame.origin = self.calculatePushOrigin()
+                fromViewController.view.frame.origin = self.calculatePushOrigin(for: fromViewController.view)
             case .none:
                 break
             }
@@ -79,36 +88,38 @@ public class SlidePresentationTransition: NSObject, UIViewControllerAnimatedTran
     private func calculateOrigin(for view: UIView) -> CGPoint {
         switch orientation {
         case .left:
-            CGPoint(x: -view.frame.width, y: 0)
+            CGPoint(x: -view.frame.width, y: view.frame.origin.y)
         case .right:
-            CGPoint(x: view.frame.width, y: 0)
+            CGPoint(x: view.frame.width, y: view.frame.origin.y)
         case .top:
-            CGPoint(x: 0, y: -view.frame.height)
+            CGPoint(x: view.frame.origin.x, y: -view.frame.height)
         case .bottom:
-            CGPoint(x: 0, y: view.frame.height)
+            CGPoint(x: view.frame.origin.x, y: view.frame.height)
         }
     }
     
-    private func calculatePushOrigin(percentage: CGFloat = 1) -> CGPoint {
+    private func calculatePushOrigin(for view: UIView, percentage: CGFloat = 1) -> CGPoint {
         switch orientation {
         case .left:
-            CGPoint(x: pushOffset * percentage, y: 0)
+            CGPoint(x: pushOffset * percentage, y: view.frame.origin.y)
         case .right:
-            CGPoint(x: -pushOffset * percentage, y: 0)
+            CGPoint(x: -pushOffset * percentage, y: view.frame.origin.y)
         case .top:
-            CGPoint(x: 0, y: pushOffset * percentage)
+            CGPoint(x: view.frame.origin.x, y: pushOffset * percentage)
         case .bottom:
-            CGPoint(x: 0, y: -pushOffset * percentage)
+            CGPoint(x: view.frame.origin.x, y: -pushOffset * percentage)
         }
     }
     
     public func resetAnimation() {
         shadowView?.alpha = shadowAlpha
         switch transitionAnimation {
-        case .zoom:
-            fromViewController?.view.transform = CGAffineTransform(scaleX: zoomOutScale, y: zoomOutScale)
+        case .zoom(let scale, _):
+            fromViewController?.view.transform = CGAffineTransform(scaleX: scale, y: scale)
         case .push:
-            self.fromViewController?.view.frame.origin = self.calculatePushOrigin()
+            if let fromViewController {
+                fromViewController.view.frame.origin = self.calculatePushOrigin(for: fromViewController.view)
+            }
         case .none:
             break
         }
@@ -117,11 +128,13 @@ public class SlidePresentationTransition: NSObject, UIViewControllerAnimatedTran
     public func animateAlongChange(in value: CGFloat) {
         shadowView?.alpha = shadowAlpha * value
         switch transitionAnimation {
-        case .zoom:
-            let scale = 1 - value + zoomOutScale * value
-            fromViewController?.view.transform = CGAffineTransform(scaleX: scale, y: scale)
+        case .zoom(let scale, _):
+            let newScale = 1 - value + scale * value
+            fromViewController?.view.transform = CGAffineTransform(scaleX: newScale, y: newScale)
         case .push:
-            self.fromViewController?.view.frame.origin = self.calculatePushOrigin(percentage: value)
+            if let fromViewController {
+                fromViewController.view.frame.origin = self.calculatePushOrigin(for: fromViewController.view, percentage: value)
+            }
         case .none:
             break
         }

@@ -15,6 +15,14 @@ public class SlideDismissalTransition: NSObject, UIViewControllerAnimatedTransit
     private let duration: TimeInterval
     public var interactionController: SlideDismissInteractionController? = nil
     
+    private var pushOffset: CGFloat {
+        if case let .push(offset) = transitionAnimation {
+            return offset
+        } else {
+            return 0
+        }
+    }
+    
     public init(
         orientation: BasicDrawerViewController.Orientation,
         transitionAnimation: BasicDrawerViewController.TransitionAnimation,
@@ -56,7 +64,7 @@ public class SlideDismissalTransition: NSObject, UIViewControllerAnimatedTransit
                 toViewController.view.transform = CGAffineTransform(scaleX: 1, y: 1)
                 toViewController.view.frame = toViewController.view.window?.frame ?? UIScreen.main.bounds
             case .push:
-                toViewController.view.frame.origin = .zero
+                toViewController.view.frame.origin = self.calculateDestinationOrigin(for: toViewController.view)
             case .none:
                 break
             }
@@ -68,13 +76,26 @@ public class SlideDismissalTransition: NSObject, UIViewControllerAnimatedTransit
     private func calculateOrigin(for view: UIView) -> CGPoint {
         switch self.orientation {
         case .left:
-            CGPoint(x: -view.frame.width, y: 0)
+            CGPoint(x: -view.frame.width, y: view.frame.origin.y)
         case .right:
-            CGPoint(x: view.frame.width, y: 0)
+            CGPoint(x: view.frame.width, y: view.frame.origin.y)
         case .top:
-            CGPoint(x: 0, y: -view.frame.height)
+            CGPoint(x: view.frame.origin.x, y: -view.frame.height)
         case .bottom:
-            CGPoint(x: 0, y: view.frame.height)
+            CGPoint(x: view.frame.origin.x, y: view.frame.height)
+        }
+    }
+    
+    private func calculateDestinationOrigin(for view: UIView) -> CGPoint {
+        switch self.orientation {
+        case .left:
+            CGPoint(x: 0, y: view.frame.origin.y)
+        case .right:
+            CGPoint(x: 0, y: view.frame.origin.y)
+        case .top:
+            CGPoint(x: view.frame.origin.x, y: 0)
+        case .bottom:
+            CGPoint(x: view.frame.origin.x, y: 0)
         }
     }
 }

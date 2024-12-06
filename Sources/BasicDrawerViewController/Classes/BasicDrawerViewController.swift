@@ -255,8 +255,8 @@ open class BasicDrawerViewController: UIViewController {
     }
     
     public enum TransitionAnimation {
-        case zoom
-        case push
+        case zoom(scale: CGFloat, cornerRadius: CGFloat)
+        case push(offset: CGFloat)
         case none
     }
 }
