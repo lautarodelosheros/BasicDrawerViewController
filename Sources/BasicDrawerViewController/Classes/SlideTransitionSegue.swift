@@ -19,13 +19,13 @@ public class SlideTransitionSegue: UIStoryboardSegue {
     
     private let slidePresentationTransition = SlidePresentationTransition(
         orientation: .right,
-        transitionAnimation: .push,
+        transitionAnimation: .push(offset: 120),
         duration: 0.3,
         shadowAlpha: 0
     )
     private let slideDismissalTransition = SlideDismissalTransition(
         orientation: .right,
-        transitionAnimation: .push,
+        transitionAnimation: .push(offset: 120),
         duration: 0.3
     )
     
@@ -34,7 +34,8 @@ public class SlideTransitionSegue: UIStoryboardSegue {
         super.perform()
         if let panEdgeGestureViewController = panEdgeGestureViewController {
             slideDismissalTransition.interactionController = SlideDismissInteractionController(
-                viewController: panEdgeGestureViewController
+                viewController: panEdgeGestureViewController,
+                isPushing: false
             )
         }
     }

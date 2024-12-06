@@ -11,14 +11,16 @@ import UIKit
 public class SlideDismissInteractionController: UIPercentDrivenInteractiveTransition {
     
     public var interactionInProgress = false
-    
     private var shouldCompleteTransition = false
+    
     private weak var viewController: UIViewController?
+    private var isPushing: Bool
     
     private let cancelSpeed = 0.5
     
-    public init(viewController: UIViewController) {
+    public init(viewController: UIViewController, isPushing: Bool) {
         self.viewController = viewController
+        self.isPushing = isPushing
         super.init()
         prepareGestureRecognizer(in: viewController.view)
     }
@@ -41,7 +43,11 @@ public class SlideDismissInteractionController: UIPercentDrivenInteractiveTransi
         switch gestureRecognizer.state {
         case .began:
             interactionInProgress = true
-            viewController.dismiss(animated: true)
+            if isPushing {
+                viewController.navigationController?.popViewController(animated: true)
+            } else {
+                viewController.dismiss(animated: true)
+            }
         case .changed:
             let velocity = gestureRecognizer.velocity(in: view).x
             shouldCompleteTransition = velocity > 100 || progress > 0.5

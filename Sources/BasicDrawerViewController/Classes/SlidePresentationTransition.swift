@@ -16,20 +16,20 @@ public class SlidePresentationTransition: NSObject, UIViewControllerAnimatedTran
     
     private let orientation: BasicDrawerViewController.Orientation
     private let transitionAnimation: BasicDrawerViewController.TransitionAnimation
+    private let transitionViewTags: [Int]
+    private var snapshotViews: [UIView] = []
     private let duration: TimeInterval
-    
-    private let zoomOutScale = 0.94
-    private let zoomOutCornerRadius: CGFloat = 60
-    private let pushOffset: CGFloat = 120
     
     public init(
         orientation: BasicDrawerViewController.Orientation,
         transitionAnimation: BasicDrawerViewController.TransitionAnimation,
+        transitionViewTags: [Int] = [],
         duration: TimeInterval,
         shadowAlpha: CGFloat = 0.6
     ) {
         self.orientation = orientation
         self.transitionAnimation = transitionAnimation
+        self.transitionViewTags = transitionViewTags
         self.duration = duration
         self.shadowAlpha = shadowAlpha
         super.init()
@@ -40,9 +40,14 @@ public class SlidePresentationTransition: NSObject, UIViewControllerAnimatedTran
     }
 
     public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        guard let fromViewController = transitionContext.viewController(forKey: .from),
+              let toView = transitionContext.view(forKey: .to)
+        else {
+            return
+        }
+        self.fromViewController = fromViewController
         let containerView = transitionContext.containerView
-        fromViewController = transitionContext.viewController(forKey: .from)
-        let toView = transitionContext.view(forKey: .to)!
+        
         toView.frame = containerView.frame
         
         let shadowView = UIView(frame: containerView.bounds)
@@ -55,60 +60,68 @@ public class SlidePresentationTransition: NSObject, UIViewControllerAnimatedTran
         
         containerView.addSubview(toView)
         toView.frame.origin = calculateOrigin(for: toView)
+        
+        snapshotViews = createSnapshotViews(tags: transitionViewTags, transitionContext: transitionContext)
 
         UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: {
             toView.frame.origin = .zero
             shadowView.alpha = self.shadowAlpha
             switch self.transitionAnimation {
-            case .zoom:
-                self.fromViewController?.view.layer.cornerRadius = self.zoomOutCornerRadius
-                self.fromViewController?.view.transform = CGAffineTransform(
-                    scaleX: self.zoomOutScale,
-                    y: self.zoomOutScale
+            case .zoom(let scale, let cornerRadius):
+                fromViewController.view.layer.cornerRadius = cornerRadius
+                fromViewController.view.transform = CGAffineTransform(
+                    scaleX: scale,
+                    y: scale
                 )
-            case .push:
-                self.fromViewController?.view.frame.origin = self.calculatePushOrigin()
+            case .push(let offset):
+                fromViewController.view.frame.origin = self.calculatePushOrigin(
+                    for: fromViewController.view,
+                    offset: offset
+                )
             case .none:
                 break
             }
-        }, completion: { _ in
+        }, completion: { [self] _ in
             transitionContext.completeTransition(true)
+            removeSnapshotViews(tags: transitionViewTags, snapshotViews: snapshotViews, transitionContext: transitionContext)
         })
     }
     
     private func calculateOrigin(for view: UIView) -> CGPoint {
         switch orientation {
         case .left:
-            CGPoint(x: -view.frame.width, y: 0)
+            CGPoint(x: -view.frame.width, y: view.frame.origin.y)
         case .right:
-            CGPoint(x: view.frame.width, y: 0)
+            CGPoint(x: view.frame.width, y: view.frame.origin.y)
         case .top:
-            CGPoint(x: 0, y: -view.frame.height)
+            CGPoint(x: view.frame.origin.x, y: -view.frame.height)
         case .bottom:
-            CGPoint(x: 0, y: view.frame.height)
+            CGPoint(x: view.frame.origin.x, y: view.frame.height)
         }
     }
     
-    private func calculatePushOrigin(percentage: CGFloat = 1) -> CGPoint {
+    private func calculatePushOrigin(for view: UIView, offset: CGFloat, percentage: CGFloat = 1) -> CGPoint {
         switch orientation {
         case .left:
-            CGPoint(x: pushOffset * percentage, y: 0)
+            CGPoint(x: offset * percentage, y: view.frame.origin.y)
         case .right:
-            CGPoint(x: -pushOffset * percentage, y: 0)
+            CGPoint(x: -offset * percentage, y: view.frame.origin.y)
         case .top:
-            CGPoint(x: 0, y: pushOffset * percentage)
+            CGPoint(x: view.frame.origin.x, y: offset * percentage)
         case .bottom:
-            CGPoint(x: 0, y: -pushOffset * percentage)
+            CGPoint(x: view.frame.origin.x, y: -offset * percentage)
         }
     }
     
     public func resetAnimation() {
         shadowView?.alpha = shadowAlpha
         switch transitionAnimation {
-        case .zoom:
-            fromViewController?.view.transform = CGAffineTransform(scaleX: zoomOutScale, y: zoomOutScale)
-        case .push:
-            self.fromViewController?.view.frame.origin = self.calculatePushOrigin()
+        case .zoom(let scale, _):
+            fromViewController?.view.transform = CGAffineTransform(scaleX: scale, y: scale)
+        case .push(let offset):
+            if let fromViewController {
+                fromViewController.view.frame.origin = calculatePushOrigin(for: fromViewController.view, offset: offset)
+            }
         case .none:
             break
         }
@@ -117,11 +130,13 @@ public class SlidePresentationTransition: NSObject, UIViewControllerAnimatedTran
     public func animateAlongChange(in value: CGFloat) {
         shadowView?.alpha = shadowAlpha * value
         switch transitionAnimation {
-        case .zoom:
-            let scale = 1 - value + zoomOutScale * value
-            fromViewController?.view.transform = CGAffineTransform(scaleX: scale, y: scale)
-        case .push:
-            self.fromViewController?.view.frame.origin = self.calculatePushOrigin(percentage: value)
+        case .zoom(let scale, _):
+            let newScale = 1 - value + scale * value
+            fromViewController?.view.transform = CGAffineTransform(scaleX: newScale, y: newScale)
+        case .push(let offset):
+            if let fromViewController {
+                fromViewController.view.frame.origin = calculatePushOrigin(for: fromViewController.view, offset: offset, percentage: value)
+            }
         case .none:
             break
         }
