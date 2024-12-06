@@ -34,7 +34,8 @@ public class SlideTransitionSegue: UIStoryboardSegue {
         super.perform()
         if let panEdgeGestureViewController = panEdgeGestureViewController {
             slideDismissalTransition.interactionController = SlideDismissInteractionController(
-                viewController: panEdgeGestureViewController
+                viewController: panEdgeGestureViewController,
+                isPushing: false
             )
         }
     }

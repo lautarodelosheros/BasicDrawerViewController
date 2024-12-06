@@ -16,8 +16,21 @@ class ViewController: UIViewController {
     private var topDrawerViewController: BasicDrawerViewController!
     private var bottomDrawerViewController: BasicDrawerViewController!
 
+    private let pushTransition = SlidePresentationTransition(
+        orientation: .right,
+        transitionAnimation: .push,
+        duration: 0.25,
+        shadowAlpha: 0
+    )
+    private let popTransition = SlideDismissalTransition(
+        orientation: .right,
+        transitionAnimation: .push,
+        duration: 0.25
+    )
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.delegate = self
         let exampleViewController1 = UIStoryboard(
             name: "Main",
             bundle: nil
@@ -81,12 +94,43 @@ class ViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "slideTransitionSegueWithoutGesture" {
+        switch segue.identifier {
+        case "slideTransitionSegueWithoutGesture":
             guard let segue = segue as? SlideTransitionSegue else {
                 return
             }
             segue.panEdgeGestureViewController = nil
+        case "pushSegue":
+            popTransition.interactionController = SlideDismissInteractionController(
+                viewController: segue.destination,
+                isPushing: true
+            )
+        case .none, .some(_):
+            break
         }
     }
 }
 
+extension ViewController: UINavigationControllerDelegate {
+    
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> (any UIViewControllerAnimatedTransitioning)? {
+        switch operation {
+        case .push:
+            return pushTransition
+        case .none:
+            return nil
+        case .pop:
+            return popTransition
+        }
+    }
+    
+    func navigationController(_ navigationController: UINavigationController, interactionControllerFor animationController: any UIViewControllerAnimatedTransitioning) -> (any UIViewControllerInteractiveTransitioning)? {
+        guard let animator = animationController as? SlideDismissalTransition,
+              let interactionController = animator.interactionController,
+              interactionController.interactionInProgress
+        else {
+            return nil
+        }
+        return interactionController
+    }
+}

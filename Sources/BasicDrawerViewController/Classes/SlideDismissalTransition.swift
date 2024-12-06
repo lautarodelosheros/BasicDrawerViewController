@@ -33,10 +33,16 @@ public class SlideDismissalTransition: NSObject, UIViewControllerAnimatedTransit
     }
 
     public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        guard let toViewController = transitionContext.viewController(forKey: .to),
+              let fromView = transitionContext.view(forKey: .from)
+        else {
+            return
+        }
         let containerView = transitionContext.containerView
-        let toViewController = transitionContext.viewController(forKey: .to)
-        let fromView = transitionContext.view(forKey: .from)!
 
+        if transitionContext.presentationStyle == .none {
+            containerView.addSubview(toViewController.view)
+        }
         containerView.addSubview(fromView)
         
         let shadowView = containerView.subviews.first(where: { $0.tag == 1 })
@@ -46,11 +52,11 @@ public class SlideDismissalTransition: NSObject, UIViewControllerAnimatedTransit
             shadowView?.alpha = 0
             switch self.transitionAnimation {
             case .zoom:
-                toViewController?.view.layer.cornerRadius = 0
-                toViewController?.view.transform = CGAffineTransform(scaleX: 1, y: 1)
-                toViewController?.view.frame = toViewController?.view.window?.frame ?? UIScreen.main.bounds
+                toViewController.view.layer.cornerRadius = 0
+                toViewController.view.transform = CGAffineTransform(scaleX: 1, y: 1)
+                toViewController.view.frame = toViewController.view.window?.frame ?? UIScreen.main.bounds
             case .push:
-                toViewController?.view.frame.origin = .zero
+                toViewController.view.frame.origin = .zero
             case .none:
                 break
             }
