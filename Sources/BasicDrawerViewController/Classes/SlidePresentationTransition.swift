@@ -59,12 +59,12 @@ public class SlidePresentationTransition: NSObject, UIViewControllerAnimatedTran
         self.shadowView = shadowView
         
         containerView.addSubview(toView)
-        toView.frame.origin = calculateOrigin(for: toView)
+        toView.frame.origin = calculateOrigin(for: fromViewController.view)
         
         snapshotViews = createSnapshotViews(tags: transitionViewTags, transitionContext: transitionContext)
 
         UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: {
-            toView.frame.origin = .zero
+            toView.frame.origin = self.calculateDestinationOrigin(for: toView)
             shadowView.alpha = self.shadowAlpha
             switch self.transitionAnimation {
             case .zoom(let scale, let cornerRadius):
@@ -97,6 +97,19 @@ public class SlidePresentationTransition: NSObject, UIViewControllerAnimatedTran
             CGPoint(x: view.frame.origin.x, y: -view.frame.height)
         case .bottom:
             CGPoint(x: view.frame.origin.x, y: view.frame.height)
+        }
+    }
+    
+    private func calculateDestinationOrigin(for view: UIView) -> CGPoint {
+        switch orientation {
+        case .left:
+            CGPoint(x: 0, y: view.frame.origin.y)
+        case .right:
+            CGPoint(x: 0, y: view.frame.origin.y)
+        case .top:
+            CGPoint(x: view.frame.origin.x, y: 0)
+        case .bottom:
+            CGPoint(x: view.frame.origin.x, y: 0)
         }
     }
     
